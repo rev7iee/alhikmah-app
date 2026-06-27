@@ -162,3 +162,15 @@ Route::get('/init-admin-rahasia', function () {
         return "Gagal: " . $e->getMessage();
     }
 });
+
+Route::get('/clear-cache', function () {
+    try {
+        \Artisan::call('view:clear');
+        \Artisan::call('route:clear');
+        \Artisan::call('config:clear');
+        \Artisan::call('cache:clear');
+        return "Semua cache di Hostinger berhasil dibersihkan total!";
+    } catch (\Exception $e) {
+        return "Gagal membersihkan: " . $e->getMessage();
+    }
+});
