@@ -14,21 +14,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Bootstrap Icons via CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
-    <!-- Custom CSS Eksternal Milikmu -->
+    <!-- Custom CSS Eksternal -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 
     <!-- ========================================================================= -->
     <!-- CSS SYSTEM: AL HIKMAH MODAL OVERLAY (RESPONSIVE AUTO-FIT CONTENT)        -->
     <!-- ========================================================================= -->
     <style>
-        /* Menetralkan transform pada body agar tidak merusak position: fixed modal */
         body {
             animation: none !important;
             transform: none !important;
             overflow-x: hidden;
         }
 
-        /* Memindahkan animasi fade-in halaman ke wrapper khusus */
         #page-wrapper {
             animation: fadeInAnimation ease 0.4s forwards;
         }
@@ -77,7 +75,6 @@
             animation: alhikmahBounce 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
-        /* Lebar khusus bingkai video profil */
         .alhikmah-video-card {
             max-width: 820px !important;
         }
@@ -98,35 +95,28 @@
             margin: 0;
         }
 
-        /* FIX BODY: Menghilangkan scroll bar internal modal */
         .alhikmah-modal-body {
             padding: 12px !important;
-            /* Padding diperkecil agar pas */
+
             background-color: #f8fafc;
             overflow: hidden !important;
-            /* Matikan paksa scroll bar modal */
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* FIX BANNER: Gambar menyusut proporsional mengikuti bingkai modal putih */
         .alhikmah-modal-body img {
             width: 100% !important;
             height: auto !important;
             max-height: 62vh !important;
-            /* Membatasi tinggi gambar murni berdasarkan tinggi layar browser */
             object-fit: contain !important;
-            /* Menjaga rasio gambar agar tidak pecah/melar */
             border-radius: 4px;
         }
 
-        /* FIX VIDEO: Mengunci wadah 16:9 agar patuh pada lebar kartu putih */
         .alhikmah-modal-body .ratio-16x9 {
             width: 100% !important;
             height: 0 !important;
             padding-bottom: 56.25% !important;
-            /* Formula matematis aspek rasio video YouTube */
             position: relative !important;
         }
 
@@ -163,11 +153,10 @@
 
 <body>
 
-    <!-- Pembungkus Efek Animasi Fade In Halaman Agar Tidak Merusak Posisi Modal -->
     <div id="page-wrapper">
 
         <!-- ========================================================================= -->
-        <!-- 1. TOP ANNOUNCEMENT BAR (Poin 1 Dinamis)                                  -->
+        <!-- 1. TOP ANNOUNCEMENT BAR                                 -->
         <!-- ========================================================================= -->
         <div class="top-bar text-center py-2 px-3">
             <span>{{ $settings['top_announcement'] ?? 'Penerimaan Santri Baru Tahun Ajaran 2026/2027 Telah Dibuka!' }}</span>
@@ -212,8 +201,6 @@
                             spiritual.</p>
                         <div class="d-flex flex-wrap gap-3">
                             <a href="#" class="btn btn-accent px-4 py-2">Pelajari Lebih Lanjut</a>
-
-                            <!-- SINKRONISASI ID: ID Diubah Menjadi triggerCustomVideoBtn Sesuai Skrip JS -->
                             @if (!empty($settings['video_profil_url']))
                                 <button type="button"
                                     class="btn btn-outline-custom px-4 py-2 d-flex align-items-center"
@@ -478,14 +465,13 @@
             </div>
         </footer>
 
-    </div> <!-- SELESAI WRAPPER HALAMAN -->
+    </div>
 
 
     <!-- ========================================================================= -->
     <!-- MASTER MODALS: STRUKTUR AMAN KELAS KUSTOM ALHIKMAH (ANTI CONFLICT SCROLL)  -->
     <!-- ========================================================================= -->
 
-    <!-- Jendela Pop-up 1: Banner Pengumuman Auto Load (Gaya SPMB Jateng) -->
     @if (!empty($settings['popup_banner_image']))
         <div id="alhikmahBannerOverlay" class="alhikmah-modal-container">
             <div class="alhikmah-modal-backdrop"></div>
@@ -507,7 +493,6 @@
         </div>
     @endif
 
-    <!-- Jendela Pop-up 2: Player Video Profil (Gaya SPMB Jateng) -->
     @if (!empty($settings['video_profil_url']))
         <div id="alhikmahVideoOverlay" class="alhikmah-modal-container">
             <div class="alhikmah-modal-backdrop"></div>
@@ -535,7 +520,7 @@
 
     <!-- Bootstrap 5 Bundle JS via CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS Eksternal Milikmu -->
+    <!-- Custom JS Eksternal -->
     <script src="{{ asset('assets/js/script.js') }}"></script>
 
     <!-- ========================================================================= -->
@@ -544,10 +529,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            // Pengendali Buka Jendela Secara Aman
             function openModalEngine(overlayElement) {
                 if (!overlayElement) return;
-                document.body.appendChild(overlayElement); // Pindahkan ke kasta HTML terluar
+                document.body.appendChild(overlayElement);
                 overlayElement.classList.add('active');
             }
 
@@ -556,7 +540,7 @@
                 if (overlayElement) {
                     overlayElement.classList.remove('active');
                     if (iframeElement) {
-                        iframeElement.setAttribute('src', ''); // Hancurkan link YouTube agar suara mati otomatis
+                        iframeElement.setAttribute('src', '');
                     }
                 }
             }
@@ -579,16 +563,15 @@
                 });
             }
 
-            // --- 2. POP-UP PLAYER VIDEO PROFIL KAMPUS ---
+            // --- 2. POP-UP PLAYER VIDEO PROFIL PONDOK ---
             const triggerVideoBtn = document.getElementById(
-                'triggerCustomVideoBtn'); // FIXED: ID Sesuai dengan HTML Tombol di Atas
+                'triggerCustomVideoBtn');
             const videoModal = document.getElementById('alhikmahVideoOverlay');
             const hCloseVideo = document.getElementById('hCloseVideoBtn');
             const fCloseVideo = document.getElementById('fCloseVideoBtn');
             const videoIframe = document.getElementById('alhikmahVideoIframe');
 
             if (videoModal && videoIframe) {
-                // Ekstraksi Tautan Biasa ke bentuk Embed URL Player
                 let rawUrl = "{!! $settings['video_profil_url'] ?? '' !!}";
                 let embedUrl = "";
                 let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -599,22 +582,16 @@
                 } else {
                     embedUrl = rawUrl;
                 }
-
-                // Klik tombol tonton video profil
                 if (triggerVideoBtn) {
                     triggerVideoBtn.addEventListener('click', function() {
                         openModalEngine(videoModal);
                         videoIframe.setAttribute('src', embedUrl + "?autoplay=1");
                     });
                 }
-
-                // Klik tombol tutup video
                 if (hCloseVideo) hCloseVideo.addEventListener('click', () => closeModalEngine(videoModal,
                     videoIframe));
                 if (fCloseVideo) fCloseVideo.addEventListener('click', () => closeModalEngine(videoModal,
                     videoIframe));
-
-                // Menutup video jika area hitam backdrop diklik
                 videoModal.querySelector('.alhikmah-modal-backdrop').addEventListener('click', () => {
                     closeModalEngine(videoModal, videoIframe);
                 });

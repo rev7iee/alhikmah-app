@@ -20,7 +20,7 @@
 <body>
 
     <!-- ========================================================================= -->
-    <!-- 1. TOP ANNOUNCEMENT BAR (Poin 1 Dinamis)                                  -->
+    <!-- 1. TOP ANNOUNCEMENT BAR                                                   -->
     <!-- ========================================================================= -->
     <div class="top-bar text-center py-2 px-3">
         <span>{{ $settings['top_announcement'] ?? 'Penerimaan Santri Baru Tahun Ajaran 2026/2027 Telah Dibuka!' }}</span>
@@ -94,15 +94,13 @@
                         klasik secara mendalam dan kontekstual.
                     </p>
                 </div>
-                <!-- Kolom Gambar Kanan dengan Floating Badge -->
+
                 <div class="col-lg-6 ps-lg-5 mt-5 mt-lg-0">
                     <div class="image-container-profile">
-                        <!-- Floating Badge -->
                         <div class="floating-badge text-center">
                             <h4 class="fw-bold mb-0">25+</h4>
                             <small class="opacity-75" style="font-size: 0.75rem">Tahun Mengabdi</small>
                         </div>
-                        <!-- COMMENT UNTUK KODE GAMBAR KEGIATAN BELAJAR / PERPUSTAKAAN -->
                         <img src="{{ asset('assets/images/profil-sejarah.webp') }}"
                             alt="Kegiatan Belajar Darul Amtsilati" class="img-fluid rounded-4 shadow-sm w-100" />
                     </div>
@@ -123,7 +121,6 @@
             </div>
 
             <div class="row g-4">
-                <!-- Card Visi -->
                 <div class="col-md-4">
                     <div class="card h-100 border-0 shadow-sm p-4 bg-white rounded-3">
                         <div class="icon-shape-green mb-4"><i class="bi bi-eye"></i></div>
@@ -137,7 +134,6 @@
                         </p>
                     </div>
                 </div>
-                <!-- Card Misi -->
                 <div class="col-md-4">
                     <div class="card h-100 border-0 shadow-sm p-4 bg-white rounded-3">
                         <div class="icon-shape-green mb-4">
@@ -159,7 +155,6 @@
                         </ul>
                     </div>
                 </div>
-                <!-- Card Tujuan -->
                 <div class="col-md-4">
                     <div class="card h-100 border-0 shadow-sm p-4 bg-white rounded-3">
                         <div class="icon-shape-green mb-4">
@@ -185,17 +180,13 @@
     <section class="py-5 bg-white">
         <div class="container py-4">
             <div class="card leadership-card bg-white shadow-sm p-4 p-md-5 position-relative overflow-hidden">
-                <!-- Tanda Kutip Dekoratif Raksasa -->
                 <div class="quote-mark">99</div>
 
                 <div class="row align-items-center g-4 position-relative" style="z-index: 2">
-                    <!-- Foto Pengasuh -->
                     <div class="col-md-4 text-center text-md-start">
-                        <!-- COMMENT UNTUK KODE GAMBAR FOTO KH AHMAD RIDWAN -->
                         <img src="{{ asset('assets/images/pengurus.webp') }}" alt="KH. Ahmad Ridwan, Lc., M.A."
                             class="img-fluid leader-img w-100" style="max-width: 280px" />
                     </div>
-                    <!-- Deskripsi & Kutipan -->
                     <div class="col-md-8 ps-md-4">
                         <span class="text-uppercase fw-bold text-success d-block mb-1"
                             style="font-size: 0.8rem; letter-spacing: 1px">Kepemimpinan</span>

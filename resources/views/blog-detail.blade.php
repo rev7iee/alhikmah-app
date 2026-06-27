@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 
     <style>
-        /* Sinkronisasi penetralan gaya transform sesuai standarisasi file welcome sebelumnya */
         body {
             animation: none !important;
             transform: none !important;
@@ -175,25 +174,19 @@
                                     style="height: 180px; object-fit: cover;"
                                     onerror="this.src='https://via.placeholder.com/350x180?text=Al+Hikmah+News'" />
                                 <div class="card-body p-4">
-                                    <!-- Kategori Berita -->
                                     <span class="text-uppercase text-muted fw-bold d-block mb-2"
                                         style="font-size: 0.68rem">{{ $related->category }}</span>
-
-                                    <!-- TAMBAHAN: Judul Berita Terkait di Bawah Kategori -->
                                     <h5 class="fw-bold mb-3" style="font-size: 1.05rem; line-height: 1.4;">
                                         <a href="{{ url('/blog/detail/' . $related->id) }}"
                                             class="text-dark text-decoration-none hover-link">
                                             {{ $related->title }}
                                         </a>
                                     </h5>
-
-                                    <!-- Cuplikan Isi Berita -->
                                     <p class="text-secondary small card-text mb-2">
                                         {{ \Str::limit(strip_tags($related->content), 90) }}
                                     </p>
 
                                     <h6 class="mb-0">
-                                        <!-- PERBAIKAN: Mengubah $post->id menjadi $related->id agar nge-link ke berita yang sesuai -->
                                         <a href="{{ url('/blog/detail/' . $related->id) }}"
                                             class="text-success fw-semibold text-decoration-none small d-inline-flex align-items-center gap-1 mt-2">
                                             Baca Selengkapnya <i class="bi bi-chevron-right"
@@ -231,10 +224,7 @@
 
     <script>
         function copyCurrentUrl() {
-            // Ambil URL halaman aktif saat ini
             const dummyUrl = window.location.href;
-
-            // Buat elemen input bayangan untuk memproses salin teks
             const tempInput = document.createElement("input");
             tempInput.value = dummyUrl;
             document.body.appendChild(tempInput);
@@ -242,7 +232,6 @@
             document.execCommand("copy");
             document.body.removeChild(tempInput);
 
-            // Munculkan teks notifikasi sukses sesaat
             const toast = document.getElementById("copyToast");
             toast.style.display = "inline";
             setTimeout(() => {

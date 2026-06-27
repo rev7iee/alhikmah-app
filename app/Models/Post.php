@@ -21,7 +21,6 @@ class Post extends Model
         'hashtags'
     ];
 
-    // Fungsi Otomatis Pembuat Slug saat Judul Berita Disimpan
     protected static function boot()
     {
         parent::boot();

@@ -14,11 +14,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Bootstrap Icons via CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
-    <!-- Custom CSS Eksternal Milikmu -->
+    <!-- Custom CSS Eksternal -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 
     <style>
-        /* Sinkronisasi penetralan transform body sesuai standar perbaikan style.css sebelumnya */
         body {
             animation: none !important;
             transform: none !important;
@@ -29,7 +28,6 @@
             animation: fadeInAnimation ease 0.4s forwards;
         }
 
-        /* Mengharmoniskan tombol pagination Laravel agar selaras dengan warna hijau Al Hikmah */
         .custom-pagination .page-item.active .page-link {
             background-color: #0a4d26 !important;
             border-color: #0a4d26 !important;
@@ -141,13 +139,10 @@
         <section class="py-5" style="background-color: #f7f9fc">
             <div class="container">
 
-                <!-- Flexbox Header All Post + Form Penyaringan Komponen Drop-down -->
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
                     <h3 class="blog-heading-all mb-0">All Posts</h3>
 
-                    <!-- Form Filter Adaptif Otomatis Submit Saat Diklik -->
                     <form action="{{ url('/blog') }}" method="GET" class="row g-2 align-items-center">
-                        <!-- Pilihan Drop-down Berdasarkan Kategori -->
                         <div class="col-auto">
                             <select name="category"
                                 class="form-select form-select-sm border-0 shadow-sm px-3 py-2 rounded-3"
@@ -160,7 +155,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <!-- Pilihan Drop-down Berdasarkan Tanggal Upload -->
+
                         <div class="col-auto">
                             <select name="sort"
                                 class="form-select form-select-sm border-0 shadow-sm px-3 py-2 rounded-3"
@@ -174,7 +169,6 @@
                     </form>
                 </div>
 
-                <!-- Grid Berita 6 Kolom Dinamis -->
                 <div class="row g-4">
                     @forelse($allPosts as $post)
                         <div class="col-md-4">
@@ -260,7 +254,7 @@
             </div>
         </footer>
 
-    </div> <!-- SELESAI WRAPPER HALAMAN -->
+    </div>
 
     <!-- Bootstrap 5 Bundle JS via CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

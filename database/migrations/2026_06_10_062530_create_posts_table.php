@@ -18,10 +18,10 @@ return new class extends Migration {
             $table->text('content');
             $table->string('thumbnail');
             $table->string('bg_detail');
-            $table->string('extra_image_1')->nullable(); // nullable berarti opsional (boleh kosong)
-            $table->string('extra_image_2')->nullable(); // nullable berarti opsional (boleh kosong)
+            $table->string('extra_image_1')->nullable();
+            $table->string('extra_image_2')->nullable();
             $table->string('hashtags')->nullable();
-            $table->timestamps(); // Ini otomatis membuat kolom created_at (tanggal upload permanen)
+            $table->timestamps();
         });
     }
 

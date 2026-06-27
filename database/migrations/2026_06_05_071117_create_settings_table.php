@@ -12,8 +12,8 @@ return new class extends Migration {
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique(); // Untuk nama pengaturannya (misal: 'pondok_address')
-            $table->text('value')->nullable(); // Untuk isi pengaturannya (bisa teks panjang / nama file gambar)
+            $table->string('key')->unique();
+            $table->text('value')->nullable();
             $table->timestamps();
         });
     }

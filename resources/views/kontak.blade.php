@@ -13,11 +13,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Bootstrap Icons via CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
-    <!-- Custom CSS Eksternal Milikmu -->
+    <!-- Custom CSS Eksternal -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 
     <style>
-        /* Sinkronisasi penetralan transform body agar tidak merusak tata letak navbar */
         body {
             animation: none !important;
             transform: none !important;
@@ -81,7 +80,6 @@
                             yang Anda butuhkan untuk perjalanan spiritual dan akademik putra-putri Anda.</p>
                     </div>
                     <div class="col-lg-6">
-                        <!-- Gambar Lanskap Pondok Dinamis -->
                         <img src="{{ !empty($settings['pondok_campus_image']) ? asset('assets/images/' . $settings['pondok_campus_image']) : asset('assets/images/lokasi.jpg') }}"
                             alt="Gedung Al Hikmah" class="img-fluid rounded-4 shadow-sm w-100"
                             style="max-height: 380px; object-fit: cover;" />
@@ -96,10 +94,8 @@
         <section class="py-5" style="background-color: #f4f7f5">
             <div class="container">
                 <div class="row g-4">
-                    <!-- Kolom Kiri: Tumpukan Kartu Info Kontak Dinamis -->
                     <div class="col-lg-4">
                         <div class="d-grid gap-3">
-                            <!-- Kartu 1: Lokasi -->
                             <div class="card border-0 shadow-sm p-3 bg-white rounded-3">
                                 <div class="d-flex align-items-start gap-3">
                                     <div class="icon-box-contact"><i class="bi bi-geo-alt"></i></div>
@@ -111,7 +107,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Kartu 2: Telepon & WA -->
                             <div class="card border-0 shadow-sm p-3 bg-white rounded-3">
                                 <div class="d-flex align-items-start gap-3">
                                     <div class="icon-box-contact"><i class="bi bi-telephone"></i></div>
@@ -122,7 +117,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Kartu 3: Email -->
                             <div class="card border-0 shadow-sm p-3 bg-white rounded-3">
                                 <div class="d-flex align-items-start gap-3">
                                     <div class="icon-box-contact"><i class="bi bi-envelope"></i></div>
@@ -145,7 +139,6 @@
                         </div>
                     </div>
 
-                    <!-- Kolom Kanan: Send us a Message Form (Direct To Email Admin) -->
                     <div class="col-lg-8">
                         <div class="card border-0 shadow-sm p-4 p-md-5 bg-white rounded-4">
                             <h3 class="fw-bold mb-4" style="color: #0a4d26">Send us a Message</h3>
@@ -305,28 +298,21 @@
             </div>
         </footer>
 
-    </div> <!-- SELESAI WRAPPER HALAMAN -->
+    </div>
 
     <!-- Bootstrap 5 Bundle JS via CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS Eksternal Milikmu -->
+    <!-- Custom JS Eksternal -->
     <script src="{{ asset('assets/js/script.js') }}"></script>
-
-    <!-- LOGIKA REDIRECTION MAILTO GENERATOR -->
     <script>
         document.getElementById('emailGeneratorForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Mencegah reload halaman
+            e.preventDefault();
 
-            // Ambil data tujuan email resmi yang diinputkan oleh admin dari PHP/Blade
             const adminEmail = "{{ $settings['pondok_email'] ?? 'info@alhikmah.sch.id' }}";
-
-            // Ambil value form inputan user
             const name = document.getElementById('form-name').value;
             const userEmail = document.getElementById('form-email').value;
             const selectSubject = document.getElementById('form-subject').value;
             const message = document.getElementById('form-message').value;
-
-            // Susun struktur teks badan email yang profesional
             const emailSubject = encodeURIComponent(`[Website Inquiry] ${selectSubject}`);
             const emailBody = encodeURIComponent(
                 `Halo Admin Al Hikmah,\n\n` +
@@ -340,7 +326,6 @@
                 `Mohon untuk segera merespon pesan ini. Terima kasih.`
             );
 
-            // Buka aplikasi surat eksternal device secara instan
             window.location.href = `mailto:${adminEmail}?subject=${emailSubject}&body=${emailBody}`;
         });
     </script>
