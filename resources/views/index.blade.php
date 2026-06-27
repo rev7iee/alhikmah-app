@@ -384,7 +384,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <img src="{{ !empty($settings['pondok_campus_image']) ? asset('assets/images/' . $settings['pondok_campus_image']) : 'https://placehold.co/600x350?text=Kampus+Al+Hikmah' }}"
+                        <img src="{{ !empty($settings['pondok_campus_image']) ? asset('assets/images/' . $settings['pondok_campus_image']) : 'https://placehold.co/600x350?text=Ponpes+Al+Hikmah' }}"
                             alt="Foto Kampus Al Hikmah" class="img-fluid rounded-4 shadow-sm w-100"
                             style="max-height: 350px; object-fit: cover;" />
                     </div>
