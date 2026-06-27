@@ -581,52 +581,13 @@
             }
 
             // --- 2. POP-UP PLAYER VIDEO PROFIL KAMPUS ---
-            // const triggerVideoBtn = document.getElementById(
-            //     'triggerCustomVideoBtn'); // FIXED: ID Sesuai dengan HTML Tombol di Atas
-            // const videoModal = document.getElementById('alhikmahVideoOverlay');
-            // const hCloseVideo = document.getElementById('hCloseVideoBtn');
-            // const fCloseVideo = document.getElementById('fCloseVideoBtn');
-            // const videoIframe = document.getElementById('alhikmahVideoIframe');
-
-            // if (videoModal && videoIframe) {
-            //     // Ekstraksi Tautan Biasa ke bentuk Embed URL Player
-            //     let rawUrl = "{!! $settings['video_profil_url'] ?? '' !!}";
-            //     let embedUrl = "";
-            //     let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            //     let match = rawUrl.match(regExp);
-
-            //     if (match && match[2].length === 11) {
-            //         embedUrl = 'https://www.youtube.com/embed/' + match[2];
-            //     } else {
-            //         embedUrl = rawUrl;
-            //     }
-
-            //     // Klik tombol tonton video profil
-            //     if (triggerVideoBtn) {
-            //         triggerVideoBtn.addEventListener('click', function() {
-            //             openModalEngine(videoModal);
-            //             videoIframe.setAttribute('src', embedUrl + "?autoplay=1");
-            //         });
-            //     }
-
-            //     // Klik tombol tutup video
-            //     if (hCloseVideo) hCloseVideo.addEventListener('click', () => closeModalEngine(videoModal,
-            //         videoIframe));
-            //     if (fCloseVideo) fCloseVideo.addEventListener('click', () => closeModalEngine(videoModal,
-            //         videoIframe));
-
-            //     // Menutup video jika area hitam backdrop diklik
-            //     videoModal.querySelector('.alhikmah-modal-backdrop').addEventListener('click', () => {
-            //         closeModalEngine(videoModal, videoIframe);
-            //     });
-            // }
-
-            // --- 2. POP-UP PLAYER VIDEO PROFIL KAMPUS (SUDAH DIPERBAIKI) ---
-            const triggerVideoBtn = document.getElementById('triggerCustomVideoBtn');
+            const triggerVideoBtn = document.getElementById(
+                'triggerCustomVideoBtn'); // FIXED: ID Sesuai dengan HTML Tombol di Atas
             const videoModal = document.getElementById('alhikmahVideoOverlay');
+            const hCloseVideo = document.getElementById('hCloseVideoBtn');
+            const fCloseVideo = document.getElementById('fCloseVideoBtn');
             const videoIframe = document.getElementById('alhikmahVideoIframe');
 
-            // PENGAMAN UTAMA: Kode hanya berjalan jika videoModal benar-benar dirender di HTML
             if (videoModal && videoIframe) {
                 // Ekstraksi Tautan Biasa ke bentuk Embed URL Player
                 let rawUrl = "{!! $settings['video_profil_url'] ?? '' !!}";
@@ -654,13 +615,10 @@
                 if (fCloseVideo) fCloseVideo.addEventListener('click', () => closeModalEngine(videoModal,
                     videoIframe));
 
-                // PENGAMAN BACKDROP: querySelector diletakkan di dalam block IF agar tidak memicu null pointer
-                const backdrop = videoModal.querySelector('.alhikmah-modal-backdrop');
-                if (backdrop) {
-                    backdrop.addEventListener('click', () => {
-                        closeModalEngine(videoModal, videoIframe);
-                    });
-                }
+                // Menutup video jika area hitam backdrop diklik
+                videoModal.querySelector('.alhikmah-modal-backdrop').addEventListener('click', () => {
+                    closeModalEngine(videoModal, videoIframe);
+                });
             }
         });
     </script>
