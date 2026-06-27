@@ -1,0 +1,387 @@
+/* Custom Variable Warna berdasarkan screen.jpg */
+:root {
+    --primary-green: #0a4d26;
+    --light-green: #116934;
+    --accent-yellow: #f1b80c;
+    --bg-light: #f4f7f5;
+    --bg-blue-light: #e6eefc;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: #333333;
+}
+
+/* Announcement Bar */
+.top-bar {
+    background-color: var(--primary-green);
+    color: var(--accent-yellow);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Navbar Custom */
+.navbar-nav .nav-link {
+    color: #444;
+    font-weight: 500;
+}
+.navbar-nav .nav-link.active {
+    color: var(--light-green) !important;
+    border-bottom: 2px solid var(--light-green);
+}
+.btn-accent {
+    background-color: var(--accent-yellow);
+    color: #000;
+    font-weight: 600;
+    border-radius: 8px;
+}
+.btn-accent:hover {
+    background-color: #d6a206;
+}
+
+/* Pengaturan Ukuran Logo */
+.logo-navbar {
+    height: 72px; /* Naikkan ukuran tinggi logo sesuai seleramu */
+    width: auto;
+    object-fit: contain;
+    margin-top: -5px; /* Trik Pro: Menarik sedikit logo ke atas */
+    margin-bottom: -5px; /* Trik Pro: Menarik sedikit logo ke bawah */
+}
+
+/* Mengunci tinggi komponen navbar agar tidak ikut membesar */
+.navbar {
+    padding-top: 2px !important; /* Memperkecil padding atas bawaan Bootstrap */
+    padding-bottom: 2px !important; /* Memperkecil padding bawah bawaan Bootstrap */
+}
+
+/* Memastikan teks menu navigasi tetap berada di as tengah secara vertikal */
+.navbar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* Hero Section */
+.hero-section {
+    background:
+        linear-gradient(rgba(10, 77, 38, 0.85), rgba(10, 77, 38, 0.85)),
+        url("../images/hero.webp") no-repeat center center/cover;
+    color: white;
+    padding: 100px 0;
+}
+.btn-outline-custom {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.btn-outline-custom:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* Program Cards */
+.bg-program-green {
+    background-color: var(--light-green);
+    color: white;
+}
+.bg-program-blue {
+    background-color: var(--bg-blue-light);
+}
+
+/* Stats Bar */
+.stats-bar {
+    background-color: var(--primary-green);
+    color: white;
+    padding: 40px 0;
+}
+.stat-number {
+    color: var(--accent-yellow);
+    font-weight: 700;
+}
+
+/* Footer & Campus Section */
+.campus-section {
+    background-color: #f0f4f8;
+}
+.social-icon {
+    width: 35px;
+    height: 35px;
+    background-color: var(--primary-green);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 10px;
+    text-decoration: none;
+}
+.main-footer {
+    background-color: #dce6f5;
+    color: #444;
+}
+
+/* 1. Memperbesar ukuran logo footer tanpa mendorong elemen lain */
+.logo-footer {
+    height: 72px;
+    width: auto;
+    object-fit: contain;
+    margin-top: -6px;
+    margin-bottom: -6px;
+    /* TRIK FIX: Menggeser logo sedikit ke kiri agar sejajar lurus dengan teks di bawahnya */
+    margin-left: -21px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 2. Memastikan teks judul di sebelah logo footer tetap presisi di tengah secara vertikal */
+.main-footer .d-flex.align-items-center {
+    align-items: center !important;
+    display: flex !important;
+}
+
+.main-footer h5 {
+    margin-bottom: 0 !important; /* Menghilangkan margin bawaan h5 agar lurus dengan logo */
+    line-height: 1;
+}
+
+/* --- Tambahan Style untuk Halaman Profil (screen_2.jpg) --- */
+
+/* Page Header / Hero Profil */
+.profile-header {
+    background:
+        linear-gradient(rgba(10, 77, 38, 0.85), rgba(10, 77, 38, 0.85)),
+        url("../images/hero-profil.webp") no-repeat center center/cover;
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+/* Floating Card Sejarah */
+.image-container-profile {
+    position: relative;
+}
+.floating-badge {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    background-color: var(--light-green);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+
+/* Visi Misi Section */
+.section-title-underline {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+.section-title-underline::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-yellow);
+}
+.icon-shape-green {
+    width: 45px;
+    height: 45px;
+    background-color: var(--light-green);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 1.2rem;
+}
+
+/* Kepemimpinan Section */
+.leadership-card {
+    border-radius: 20px;
+    border: 1px solid #eef2f5 !important;
+}
+.leader-img {
+    border-radius: 15px;
+    border: 3px solid var(--light-green);
+    object-fit: cover;
+}
+.quote-mark {
+    font-size: 6rem;
+    font-family: "Georgia", serif;
+    color: #f0f0f0;
+    line-height: 1;
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    user-select: none;
+}
+.btn-dark-green {
+    background-color: #0d3b1e;
+    color: white;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 8px 20px;
+}
+.btn-dark-green:hover {
+    background-color: var(--primary-green);
+    color: white;
+}
+
+/* --- Tambahan Style untuk Halaman Blog (screen_3.jpg) --- */
+
+/* Featured Post Custom Card */
+.featured-box {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #eef2f5 !important;
+    background-color: #fff;
+}
+.featured-img {
+    height: 100%;
+    min-height: 350px;
+    object-fit: cover;
+}
+.badge-featured {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: var(--primary-green);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* All Posts Heading & Grid */
+.blog-heading-all {
+    font-weight: 700;
+    color: var(--primary-green);
+    position: relative;
+    padding-bottom: 8px;
+    margin-bottom: 30px;
+}
+
+/* Pagination Custom */
+.custom-pagination .page-link {
+    color: #444;
+    border: 1px solid #eef2f5;
+    margin: 0 4px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+.custom-pagination .page-item.active .page-link {
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+    color: white;
+}
+.custom-pagination .page-link:hover {
+    background-color: #f4f7f5;
+    color: var(--primary-green);
+}
+
+/* --- Tambahan Style untuk Halaman Kontak (screen_5.jpg) --- */
+
+/* Ikon Bulat Info Kontak */
+.icon-box-contact {
+    width: 45px;
+    height: 45px;
+    background-color: #e6eefc;
+    color: #0d6efd;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 1.2rem;
+}
+
+/* Kustomisasi Form Input */
+.form-contact .form-control,
+.form-contact .form-select {
+    border: 1px solid #e2e8f0;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+}
+.form-contact .form-control:focus,
+.form-contact .form-select:focus {
+    border-color: var(--light-green);
+    box-shadow: 0 0 0 0.2rem rgba(17, 105, 52, 0.15);
+}
+
+/* Peta Placeholder Area */
+.map-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #eef2f5;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* CTA Tour Banner */
+.cta-tour-banner {
+    background-color: #0a4d26;
+    color: white;
+    border-radius: 20px;
+}
+.btn-gold-dark {
+    background-color: #8c5300;
+    color: white;
+    font-weight: 500;
+    border-radius: 8px;
+}
+.btn-gold-dark:hover {
+    background-color: #6e4100;
+    color: white;
+}
+.btn-outline-white {
+    border: 1px solid white;
+    color: white;
+    font-weight: 500;
+    border-radius: 8px;
+}
+.btn-outline-white:hover {
+    background-color: white;
+    color: #0a4d26;
+}
+
+/* --- Detailing: Smooth Page Transitions & Animations --- */
+
+/* 1. Membuat scroll layar menjadi halus saat klik jangkar/id */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 2. Animasi Fade In untuk Body Halaman */
+body {
+    animation: fadeInAnimation ease 0.4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(8px); /* Efek sedikit terangkat saat muncul */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 3. Detailing Efek Hover pada Link Menu Navbar & Kartu Berita */
+.navbar-nav .nav-link,
+.hover-link,
+.card {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efek angkat sedikit pada kartu berita saat di-hover */
+.card:hover {
+    transform: translateY(-5px);
+}
