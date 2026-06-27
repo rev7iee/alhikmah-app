@@ -15,11 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         // Membuat akun admin default jika belum ada
         User::updateOrCreate(
-            ['email' => 'admin@alhikmah.com'], // Email untuk login
+            ['email' => 'saifudinzuhrisaja@gmail.com'], // Email untuk login
             [
                 'name' => 'Super Admin Al Hikmah',
-                'password' => Hash::make('password123'), // Password default (ganti yang aman)
-                'role' => 'admin' // sesuaikan dengan kolom role milikmu jika ada
+                'password' => Hash::make('alhikmah_123*'), // Password default (ganti yang aman)
             ]
         );
     }
