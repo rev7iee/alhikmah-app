@@ -29,19 +29,33 @@ class SettingController extends Controller
         $inputs = $request->except('_token');
 
         foreach ($inputs as $key => $value) {
+
+            // Logika Khusus jika inputan berupa FILE GAMBAR
             if ($request->hasFile($key)) {
                 $file = $request->file($key);
+                // Beri nama unik pada file gambar
                 $fileName = $key . '_' . time() . '.' . $file->getClientOriginalExtension();
-                $file->move(public_path('assets/images'), $fileName);
+
+                // Logika otomatis: jika di hosting pakai public_html, jika di lokal pakai path normal Laragon
+                $destinationPath = is_dir(base_path('../public_html'))
+                    ? base_path('../public_html/assets/images')
+                    : public_path('assets/images');
+
+                // Pindahkan file ke folder tujuan yang sudah presisi
+                $file->move($destinationPath, $fileName);
                 $value = $fileName;
+
+                // OPSI TAMBAHAN: Hapus file gambar lama di folder jika admin mengganti gambarnya
                 $oldSetting = Setting::where('key', $key)->first();
                 if ($oldSetting && $oldSetting->value) {
-                    $oldFilePath = public_path('assets/images/' . $oldSetting->value);
+                    $oldFilePath = $destinationPath . '/' . $oldSetting->value;
                     if (file_exists($oldFilePath)) {
                         @unlink($oldFilePath);
                     }
                 }
             }
+
+            // Eksekusi fungsi Sakti: Jika KEY belum ada maka buat baru (CREATE), jika sudah ada maka timpa (UPDATE)
             Setting::updateOrCreate(
                 ['key' => $key],
                 ['value' => $value]
@@ -55,8 +69,13 @@ class SettingController extends Controller
         $setting = Setting::where('key', 'LIKE', '%popup_banner_image%')->first();
 
         if ($setting) {
+            // 1. Hapus file fisiknya jika ada menggunakan jalur dinamis
             if (!empty($setting->value)) {
-                $filePath = public_path('assets/images/' . $setting->value);
+                $destinationPath = is_dir(base_path('../public_html'))
+                    ? base_path('../public_html/assets/images')
+                    : public_path('assets/images');
+
+                $filePath = $destinationPath . '/' . $setting->value;
                 if (file_exists($filePath)) {
                     @unlink($filePath);
                 }
