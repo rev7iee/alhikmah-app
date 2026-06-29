@@ -30,13 +30,17 @@ class PostController extends Controller
             'title' => 'required|string|max:255',
             'category' => 'required|in:News,Education,Events,Informatic',
             'content' => 'required',
-            'thumbnail' => 'required|image|mimes:jpeg,png,jpg|max:2000048',
-            'bg_detail' => 'required|image|mimes:jpeg,png,jpg|max:2000048',
-            'extra_image_1' => 'nullable|image|mimes:jpeg,png,jpg|max:2000048',
-            'extra_image_2' => 'nullable|image|mimes:jpeg,png,jpg|max:2000048',
+            'thumbnail' => 'required|image|mimes:jpeg,png,jpg|max:12288',
+            'bg_detail' => 'required|image|mimes:jpeg,png,jpg|max:12288',
+            'extra_image_1' => 'nullable|image|mimes:jpeg,png,jpg|max:12288',
+            'extra_image_2' => 'nullable|image|mimes:jpeg,png,jpg|max:12288',
             'hashtags' => 'nullable|string'
+        ], [
+            'required' => 'Kolom ini wajib diisi.',
+            'image' => 'File harus berupa gambar.',
+            'mimes' => 'Format gambar harus jpeg, png, atau jpg.',
+            'max' => 'Ukuran gambar terlalu besar, maksimal adalah 12 MB.',
         ]);
-
         $data = $request->all();
         $images = ['thumbnail', 'bg_detail', 'extra_image_1', 'extra_image_2'];
 
@@ -68,11 +72,16 @@ class PostController extends Controller
             'title' => 'required|string|max:255',
             'category' => 'required|in:News,Education,Events,Informatic',
             'content' => 'required',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg|max:2000048',
-            'bg_detail' => 'nullable|image|mimes:jpeg,png,jpg|max:2000048',
-            'extra_image_1' => 'nullable|image|mimes:jpeg,png,jpg|max:2000048',
-            'extra_image_2' => 'nullable|image|mimes:jpeg,png,jpg|max:2000048',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg|max:12288',
+            'bg_detail' => 'nullable|image|mimes:jpeg,png,jpg|max:12288',
+            'extra_image_1' => 'nullable|image|mimes:jpeg,png,jpg|max:12288',
+            'extra_image_2' => 'nullable|image|mimes:jpeg,png,jpg|max:12288',
             'hashtags' => 'nullable|string'
+        ], [
+            'required' => 'Kolom ini wajib diisi.',
+            'image' => 'File harus berupa gambar.',
+            'mimes' => 'Format gambar harus jpeg, png, atau jpg.',
+            'max' => 'Ukuran gambar terlalu besar, maksimal adalah 12 MB.',
         ]);
 
         $data = $request->all();

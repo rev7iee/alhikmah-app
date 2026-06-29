@@ -556,6 +556,20 @@
                         </div>
                     @endif
 
+                    @if ($errors->any())
+                        <div class="alert alert-danger border-0 shadow-sm rounded-3 mb-4">
+                            <div class="d-flex align-items-center gap-2 mb-2 fw-bold text-danger">
+                                <i class="bi bi-exclamation-triangle-fill fs-5"></i>
+                                <span>Gagal Menerbitkan Berita:</span>
+                            </div>
+                            <ul class="mb-0 small ps-4 text-danger">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <div class="row g-4 mb-4 align-items-stretch">
                         <div class="col-md-8">
                             <div class="filter-card h-100 d-flex align-items-center gap-3">

@@ -18,13 +18,13 @@ class SettingController extends Controller
     public function save(Request $request)
     {
         $request->validate([
-            'popup_banner_image' => 'nullable|image|mimes:jpeg,png,jpg|max:20120',
-            'program_1_image' => 'nullable|image|mimes:jpeg,png,jpg|max:20120',
-            'pondok_campus_image' => 'nullable|image|mimes:jpeg,png,jpg|max:20120',
+            'popup_banner_image' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
+            'program_1_image' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
+            'pondok_campus_image' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
         ], [
             'image' => 'File harus berupa gambar.',
             'mimes' => 'Format gambar harus jpeg, png, atau jpg.',
-            'max' => 'Ukuran gambar terlalu besar, maksimal adalah 20 MB.',
+            'max' => 'Ukuran gambar terlalu besar, maksimal adalah 10 MB.',
         ]);
         $inputs = $request->except('_token');
 
