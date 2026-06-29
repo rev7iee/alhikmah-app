@@ -430,9 +430,9 @@
     </style>
 </head>
 
-<body>
+<body style="overflow-x: hidden; width: 100%;">
 
-    <div class="container-fluid px-0">
+    <div class="container-fluid px-0" style="overflow-x: hidden; width: 100%;">
         <div class="row g-0">
 
             <!-- ========================================== -->
@@ -561,7 +561,8 @@
                                         <!-- Kolom Deskripsi Kiri -->
                                         <div class="col-lg-4">
                                             <h5 class="section-desc-title mb-1">Umum & Banner</h5>
-                                            <p class="text-muted small" style="line-height: 1.5;">Konfigurasi identitas
+                                            <p class="text-muted small" style="line-height: 1.5;">Konfigurasi
+                                                identitas
                                                 dasar sekolah dan tampilan utama website.</p>
                                         </div>
                                         <!-- Kolom Input Kanan -->
@@ -885,7 +886,8 @@
                             if (fileSize > maxSizeBytes) {
                                 // Peringatan instan tanpa membebani loading server Hostinger
                                 alert(
-                                    `Gagal: Ukuran file ${item.name} terlalu besar!\nMaksimal ukuran yang diperbolehkan adalah 10 MB.\n\nFile yang Anda pilih berukuran ${(fileSize / 1024 / 1024).toFixed(2)} MB.`);
+                                    `Gagal: Ukuran file ${item.name} terlalu besar!\nMaksimal ukuran yang diperbolehkan adalah 10 MB.\n\nFile yang Anda pilih berukuran ${(fileSize / 1024 / 1024).toFixed(2)} MB.`
+                                    );
 
                                 // Kosongkan kembali input file yang melanggar agar tidak ter-submit
                                 this.value = '';
@@ -940,7 +942,8 @@
                     // Validasi ukuran khusus untuk fitur DROP file di Banner
                     if (fileSize > maxSizeBytes) {
                         alert(
-                            `Gagal: Ukuran file Banner Pengumuman Beranda terlalu besar!\nMaksimal ukuran yang diperbolehkan adalah 10 MB.\n\nFile yang Anda lepas berukuran ${(fileSize / 1024 / 1024).toFixed(2)} MB.`);
+                            `Gagal: Ukuran file Banner Pengumuman Beranda terlalu besar!\nMaksimal ukuran yang diperbolehkan adalah 10 MB.\n\nFile yang Anda lepas berukuran ${(fileSize / 1024 / 1024).toFixed(2)} MB.`
+                            );
                         fileInput.value = '';
                         previewContainer.classList.add('d-none');
                         return;

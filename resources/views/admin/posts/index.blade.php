@@ -472,9 +472,9 @@
     </style>
 </head>
 
-<body>
+<body style="overflow-x: hidden; width: 100%;">
 
-    <div class="container-fluid px-0">
+    <div class="container-fluid px-0" style="overflow-x: hidden; width: 100%;">
         <div class="row g-0">
 
             <div class="col-md-3 col-lg-2 px-0 sidebar d-flex flex-column justify-content-between pb-4">
