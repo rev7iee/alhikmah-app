@@ -612,10 +612,10 @@
                                                 @if (!empty($settings['popup_banner_image']))
                                                     <div
                                                         class="mt-3 p-3 border rounded-3 bg-light bg-opacity-50 d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3">
-                                                        <div class="d-flex align-items-center gap-2 text-truncate w-100"
-                                                            style="max-width: 100%;">
+                                                        <div class="d-flex align-items-center gap-2 min-w-0">
                                                             <i class="bi bi-image text-success fs-5 flex-shrink-0"></i>
-                                                            <span class="small fw-medium text-dark text-truncate">
+                                                            <span
+                                                                class="small fw-medium text-dark text-truncate d-block">
                                                                 {{ $settings['popup_banner_image'] }}
                                                             </span>
                                                         </div>
