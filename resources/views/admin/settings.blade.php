@@ -620,7 +620,7 @@
                                                             </span>
                                                         </div>
                                                         <button type="button"
-                                                            class="btn btn-sm btn-outline-danger px-3 rounded-3 fw-medium w-100 w-sm-auto flex-shrink-0"
+                                                            class="btn btn-sm btn-outline-danger px-3 rounded-3 fw-medium w-10 w-sm-auto flex-shrink-0"
                                                             style="font-size: 0.78rem;"
                                                             onclick="if(confirm('Apakah Anda yakin ingin menghapus dan menonaktifkan banner pengumuman ini?')) { document.getElementById('form-hapus-banner-independen').submit(); }">
                                                             <i class="bi bi-trash3 me-1"></i> Hapus Banner
