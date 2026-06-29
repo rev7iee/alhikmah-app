@@ -151,44 +151,34 @@
     </style>
 </head>
 
-<body>
+<body style="background-color: #ffffff; overflow-x: hidden;">
 
-    <div id="page-wrapper">
+    <div class="top-bar text-center py-2 px-3">
+        <span>{{ $settings['top_announcement'] ?? 'Penerimaan Santri Baru Tahun Ajaran 2026/2027 Telah Dibuka!' }}</span>
+    </div>
 
-        <!-- ========================================================================= -->
-        <!-- 1. TOP ANNOUNCEMENT BAR                                 -->
-        <!-- ========================================================================= -->
-        <div class="top-bar text-center py-2 px-3">
-            <span>{{ $settings['top_announcement'] ?? 'Penerimaan Santri Baru Tahun Ajaran 2026/2027 Telah Dibuka!' }}</span>
-        </div>
-
-        <!-- ========================================================================= -->
-        <!-- 2. NAVBAR                                                                 -->
-        <!-- ========================================================================= -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
-            <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <img src="{{ asset('assets/images/logo-header.png') }}" alt="Logo Al Hikmah"
-                        class="logo-navbar me-2" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto me-4 mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" href="{{ url('/') }}">Beranda</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/profil') }}">Profil</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/blog') }}">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/kontak') }}">Kontak</a></li>
-                    </ul>
-                    <a href="{{ url('/') }}" class="btn btn-accent px-4 py-2">PSB</a>
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm" style="width: 100%;">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+                <img src="{{ asset('assets/images/logo-header.png') }}" alt="Logo Al Hikmah" class="logo-navbar me-2" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto me-4 mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="{{ url('/') }}">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/profil') }}">Profil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/blog') }}">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/kontak') }}">Kontak</a></li>
+                </ul>
+                <a href="{{ url('/') }}" class="btn btn-accent px-4 py-2">PSB</a>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <!-- ========================================================================= -->
-        <!-- 3. HERO SECTION & VIDEO TRIGGER (Poin 3)                                  -->
-        <!-- ========================================================================= -->
+    <div id="page-wrapper" style="overflow-x: hidden; width: 100%;">
+
         <header class="hero-section d-flex align-items-center">
             <div class="container py-5">
                 <div class="row">
