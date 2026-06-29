@@ -671,7 +671,7 @@
                                                 <div>
                                                     <label class="form-label small text-muted mb-1">Ganti File
                                                         Ilustrasi Gambar</label>
-                                                    <input type="file" name="program_1_image"
+                                                    <input type="file" name="program_1_image" id="program_1_input"
                                                         class="form-control input-box-premium" accept="image/*">
                                                     @if (!empty($settings['program_1_image']))
                                                         <small class="text-success d-block mt-1 fw-medium"
@@ -807,7 +807,7 @@
                                             <div class="mb-0">
                                                 <label class="form-label small fw-semibold text-dark mb-1">Foto Lanskap
                                                     Pondok</label>
-                                                <input type="file" name="pondok_campus_image"
+                                                <input type="file" name="pondok_campus_image" id="campus_input"
                                                     class="form-control input-box-premium" accept="image/*">
                                                 @if (!empty($settings['pondok_campus_image']))
                                                     <small class="text-primary d-block mt-1 fw-medium"
@@ -858,9 +858,50 @@
             const imagePreview = document.getElementById('image-preview');
             const fileNamePreview = document.getElementById('file-name-preview');
 
+            // --- VALIDASI INSTAN UKURAN GAMBAR SETTING (MAKSIMAL 10 MB) ---
+            const maxSizeBytes = 10 * 1024 * 1024; // 10 MB dalam satuan Bytes
+
+            // Daftar semua input file di halaman Setting Website
+            const settingInputs = [{
+                    element: fileInput,
+                    name: 'Banner Pengumuman Beranda'
+                },
+                {
+                    element: document.getElementById('program_1_input'),
+                    name: 'Foto Program Unggulan 1'
+                },
+                {
+                    element: document.getElementById('campus_input'),
+                    name: 'Foto Lanskap Pondok'
+                }
+            ];
+
+            settingInputs.forEach(item => {
+                if (item.element) {
+                    item.element.addEventListener('change', function() {
+                        if (this.files.length > 0) {
+                            const fileSize = this.files[0].size;
+
+                            if (fileSize > maxSizeBytes) {
+                                // Peringatan instan tanpa membebani loading server Hostinger
+                                alert(
+                                    `Gagal: Ukuran file ${item.name} terlalu besar!\nMaksimal ukuran yang diperbolehkan adalah 10 MB.\n\nFile yang Anda pilih berukuran ${(fileSize / 1024 / 1024).toFixed(2)} MB.`);
+
+                                // Kosongkan kembali input file yang melanggar agar tidak ter-submit
+                                this.value = '';
+
+                                // Jika yang melanggar adalah area drag-drop banner, sembunyikan container preview
+                                if (item.element === fileInput) {
+                                    previewContainer.classList.add('d-none');
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+
             // 1. Jika area drop-zone di-klik, pemicu klik input file bawaan
             dropZone.addEventListener('click', (e) => {
-                // Mencegah trigger ganda jika yang diklik adalah pratinjau itu sendiri
                 if (e.target !== fileInput) {
                     fileInput.click();
                 }
@@ -894,25 +935,35 @@
                 const files = dt.files;
 
                 if (files.length > 0) {
-                    fileInput.files = files; // Masukkan file hasil drop ke elemen input HTML
+                    const fileSize = files[0].size;
+
+                    // Validasi ukuran khusus untuk fitur DROP file di Banner
+                    if (fileSize > maxSizeBytes) {
+                        alert(
+                            `Gagal: Ukuran file Banner Pengumuman Beranda terlalu besar!\nMaksimal ukuran yang diperbolehkan adalah 10 MB.\n\nFile yang Anda lepas berukuran ${(fileSize / 1024 / 1024).toFixed(2)} MB.`);
+                        fileInput.value = '';
+                        previewContainer.classList.add('d-none');
+                        return;
+                    }
+
+                    fileInput.files = files;
                     handlePreview(files[0]);
                 }
             });
 
             // 5. Menangani file yang dipilih lewat dialog klik biasa (Change Event)
             fileInput.addEventListener('change', function() {
-                if (this.files.length > 0) {
+                if (this.files.length > 0 && this.files[0].size <= maxSizeBytes) {
                     handlePreview(this.files[0]);
                 }
             });
 
             // Fungsi membaca file dan memunculkan Pratinjau (Preview) Gambar
             function handlePreview(file) {
-                // Validasi ekstensi file di sisi Client
                 const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
                 if (!validTypes.includes(file.type)) {
                     alert('Format file tidak didukung! Sila unggah file berformat JPG, JPEG, atau PNG.');
-                    fileInput.value = ''; // Reset input
+                    fileInput.value = '';
                     return;
                 }
 
