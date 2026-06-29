@@ -479,6 +479,64 @@
                 -webkit-overflow-scrolling: touch;
             }
         }
+
+        /* ======================================================== */
+        /* LOCK TOMBOL LOGOUT SIDEBAR DI MOBILE (FIXED BOTTOM)      */
+        /* ======================================================== */
+
+        @media (max-width: 991.98px) {
+
+            /* 1. Isolasi sidebar mobile agar bertindak sebagai wadah flex yang kaku */
+            .sidebar {
+                display: none !important;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 280px !important;
+                height: 100vh !important;
+                z-index: 1050 !important;
+                padding-bottom: 0 !important;
+                /* Hapus padding bawah bawaan */
+                overflow: hidden !important;
+                /* Matikan scroll global sidebar */
+            }
+
+            .sidebar.show-sidebar {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: bsetween !important;
+            }
+
+            /* 2. Biarkan HANYA area menu atas yang boleh di-scroll jika panjang */
+            .sidebar>div:first-child {
+                flex-grow: 1 !important;
+                overflow-y: auto !important;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 20px;
+            }
+
+            /* 3. KUNCI MATI area logout berada di paling bawah drawer mobile */
+            .sidebar>div:last-child {
+                position: relative !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                background-color: var(--bg-sidebar) !important;
+                /* Jaga warna latar belakang tetap sama */
+                padding-top: 15px !important;
+                padding-bottom: 25px !important;
+                /* Beri ruang aman dari notch/home indicator HP */
+                border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+                /* Beri garis pembatas estetik */
+                z-index: 1060 !important;
+            }
+
+            /* Sesuaikan ukuran tombol logout di mobile agar presisi */
+            .btn-logout-premium {
+                margin: 0 18px !important;
+                width: calc(100% - 36px) !important;
+            }
+        }
     </style>
 </head>
 
