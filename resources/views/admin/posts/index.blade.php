@@ -738,14 +738,14 @@
                             <div class="col-md-6">
                                 <label class="form-label small fw-bold text-secondary text-uppercase tracking-wider"
                                     style="font-size: 0.7rem;">Thumbnail Berita (Halaman Blog)</label>
-                                <input type="file" name="thumbnail" class="form-control modal-input-custom"
-                                    accept="image/*" required>
+                                <input type="file" name="thumbnail" id="input_thumbnail"
+                                    class="form-control modal-input-custom" accept="image/*" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label small fw-bold text-secondary text-uppercase tracking-wider"
                                     style="font-size: 0.7rem;">Background Detail (Halaman Dalam)</label>
-                                <input type="file" name="bg_detail" class="form-control modal-input-custom"
-                                    accept="image/*" required>
+                                <input type="file" name="bg_detail" id="input_bg_detail"
+                                    class="form-control modal-input-custom" accept="image/*" required>
                             </div>
                         </div>
                         <div class="mb-3.5">
@@ -758,14 +758,14 @@
                             <div class="col-md-6">
                                 <label class="form-label small fw-bold text-secondary text-uppercase tracking-wider"
                                     style="font-size: 0.7rem;">Gambar Tambahan 1 (Opsional)</label>
-                                <input type="file" name="extra_image_1" class="form-control modal-input-custom"
-                                    accept="image/*">
+                                <input type="file" name="extra_image_1" id="input_extra_image_1"
+                                    class="form-control modal-input-custom" accept="image/*">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label small fw-bold text-secondary text-uppercase tracking-wider"
                                     style="font-size: 0.7rem;">Gambar Tambahan 2 (Opsional)</label>
-                                <input type="file" name="extra_image_2" class="form-control modal-input-custom"
-                                    accept="image/*">
+                                <input type="file" name="extra_image_2" id="input_extra_image_2"
+                                    class="form-control modal-input-custom" accept="image/*">
                             </div>
                         </div>
                         <div class="mb-0">
@@ -822,14 +822,14 @@
                             <div class="col-md-6">
                                 <label class="form-label small fw-bold text-secondary text-uppercase tracking-wider"
                                     style="font-size: 0.7rem;">Ubah Thumbnail (Kosongkan jika tetap)</label>
-                                <input type="file" name="thumbnail" class="form-control modal-input-custom"
-                                    accept="image/*">
+                                <input type="file" name="thumbnail" id="edit_input_thumbnail"
+                                    class="form-control modal-input-custom" accept="image/*">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label small fw-bold text-secondary text-uppercase tracking-wider"
                                     style="font-size: 0.7rem;">Ubah Background Detail (Kosongkan jika tetap)</label>
-                                <input type="file" name="bg_detail" class="form-control modal-input-custom"
-                                    accept="image/*">
+                                <input type="file" name="bg_detail" id="edit_input_bg_detail"
+                                    class="form-control modal-input-custom" accept="image/*">
                             </div>
                         </div>
                         <div class="mb-3.5">
@@ -841,14 +841,14 @@
                             <div class="col-md-6">
                                 <label class="form-label small fw-bold text-secondary text-uppercase tracking-wider"
                                     style="font-size: 0.7rem;">Ubah Gambar Tambahan 1 (Opsional)</label>
-                                <input type="file" name="extra_image_1" class="form-control modal-input-custom"
-                                    accept="image/*">
+                                <input type="file" name="extra_image_1" id="edit_input_extra_1"
+                                    class="form-control modal-input-custom" accept="image/*">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label small fw-bold text-secondary text-uppercase tracking-wider"
                                     style="font-size: 0.7rem;">Ubah Gambar Tambahan 2 (Opsional)</label>
-                                <input type="file" name="extra_image_2" class="form-control modal-input-custom"
-                                    accept="image/*">
+                                <input type="file" name="extra_image_2" id="edit_input_extra_2"
+                                    class="form-control modal-input-custom" accept="image/*">
                             </div>
                         </div>
                         <div class="mb-0">
@@ -911,6 +911,62 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
+            // --- VALIDASI INSTAN UKURAN GAMBAR (MAKSIMAL 12 MB) ---
+            const maxSizeBytes = 12 * 1024 * 1024; // Konversi 12 MB ke Satuan Bytes
+            const fileInputs = [{
+                    element: document.getElementById('input_thumbnail'),
+                    name: 'Thumbnail'
+                },
+                {
+                    element: document.getElementById('input_bg_detail'),
+                    name: 'Background Detail'
+                },
+                {
+                    element: document.getElementById('input_extra_image_1'),
+                    name: 'Extra Image 1'
+                },
+                {
+                    element: document.getElementById('input_extra_image_2'),
+                    name: 'Extra Image 2'
+                },
+
+                {
+                    element: document.getElementById('edit_input_thumbnail'),
+                    name: 'Thumbnail (Edit)'
+                },
+                {
+                    element: document.getElementById('edit_input_bg_detail'),
+                    name: 'Background Detail (Edit)'
+                },
+                {
+                    element: document.getElementById('edit_input_extra_1'),
+                    name: 'Gambar Tambahan 1 (Edit)'
+                },
+                {
+                    element: document.getElementById('edit_input_extra_2'),
+                    name: 'Gambar Tambahan 2 (Edit)'
+                }
+            ];
+
+            fileInputs.forEach(item => {
+                if (item.element) {
+                    item.element.addEventListener('change', function() {
+                        if (this.files.length > 0) {
+                            const fileSize = this.files[0].size;
+
+                            if (fileSize > maxSizeBytes) {
+                                // Tampilkan pesan instan tanpa load server
+                                alert(
+                                    `Gagal: Ukuran file ${item.name} terlalu besar! Maksimal ukuran yang diperbolehkan adalah 12 MB. File yang Anda pilih berukuran ${(fileSize / 1024 / 1024).toFixed(2)} MB.`
+                                );
+
+                                // Reset isi input file menjadi kosong kembali
+                                this.value = '';
+                            }
+                        }
+                    });
+                }
+            });
             // LOGIKA MODAL EDIT
             const editButtons = document.querySelectorAll('.btn-edit-trigger');
             editButtons.forEach(button => {
