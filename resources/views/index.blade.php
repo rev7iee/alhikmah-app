@@ -153,9 +153,16 @@
 
 <body style="background-color: #ffffff; overflow-x: hidden;">
 
+    <!-- ========================================================================= -->
+    <!-- 1. TOP ANNOUNCEMENT BAR                                 -->
+    <!-- ========================================================================= -->
     <div class="top-bar text-center py-2 px-3">
         <span>{{ $settings['top_announcement'] ?? 'Penerimaan Santri Baru Tahun Ajaran 2026/2027 Telah Dibuka!' }}</span>
     </div>
+
+    <!-- ========================================================================= -->
+    <!-- 2. NAVBAR                                                                 -->
+    <!-- ========================================================================= -->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm" style="width: 100%;">
         <div class="container">
@@ -178,6 +185,10 @@
     </nav>
 
     <div id="page-wrapper" style="overflow-x: hidden; width: 100%;">
+
+        <!-- ========================================================================= -->
+        <!-- 3. HERO SECTION & VIDEO TRIGGER (Poin 3)                                  -->
+        <!-- ========================================================================= -->
 
         <header class="hero-section d-flex align-items-center">
             <div class="container py-5">
