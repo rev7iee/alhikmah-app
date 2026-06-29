@@ -324,8 +324,7 @@
                         <div class="col-md-4">
                             <div class="card h-100 border-0 shadow-sm overflow-hidden rounded-4">
                                 <img src="{{ asset('assets/images/news/' . $post->thumbnail) }}" class="card-img-top"
-                                    alt="{{ $post->title }}" style="height: 200px; object-fit: cover;"
-                                    onerror="this.src='https://via.placeholder.com/350x200?text=News+Al+Hikmah'" />
+                                    alt="{{ $post->title }}" style="height: 200px; object-fit: cover;" />
                                 <div class="card-body p-4 d-flex flex-column justify-content-between">
                                     <div>
                                         <span class="text-uppercase text-success fw-bold d-block mb-2"

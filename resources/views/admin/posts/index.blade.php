@@ -630,8 +630,7 @@
                                             </td>
                                             <td>
                                                 <img src="{{ asset('assets/images/news/' . $post->thumbnail) }}"
-                                                    class="table-img" alt="thumb"
-                                                    onerror="this.src='https://via.placeholder.com/54x38?text=News'">
+                                                    class="table-img" alt="thumb">
                                             </td>
                                             <td>
                                                 <span class="fw-semibold text-dark d-block mb-0.5"

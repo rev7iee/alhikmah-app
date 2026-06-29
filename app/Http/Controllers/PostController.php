@@ -48,7 +48,11 @@ class PostController extends Controller
             if ($request->hasFile($imgKey)) {
                 $file = $request->file($imgKey);
                 $fileName = 'news_' . $imgKey . '_' . time() . '_' . Str::random(5) . '.' . $file->getClientOriginalExtension();
-                $file->move(public_path('assets/images/news'), $fileName);
+                $destinationPath = is_dir(base_path('../public_html'))
+                    ? base_path('../public_html/assets/images/news')
+                    : public_path('assets/images/news');
+
+                $file->move($destinationPath, $fileName);
                 $data[$imgKey] = $fileName;
             }
         }
@@ -91,7 +95,11 @@ class PostController extends Controller
             if ($request->hasFile($imgKey)) {
                 $file = $request->file($imgKey);
                 $fileName = 'news_' . $imgKey . '_' . time() . '_' . Str::random(5) . '.' . $file->getClientOriginalExtension();
-                $file->move(public_path('assets/images/news'), $fileName);
+                $destinationPath = is_dir(base_path('../public_html'))
+                    ? base_path('../public_html/assets/images/news')
+                    : public_path('assets/images/news');
+
+                $file->move($destinationPath, $fileName);
 
                 if (!empty($post->$imgKey)) {
                     $oldPath = public_path('assets/images/news/' . $post->$imgKey);
