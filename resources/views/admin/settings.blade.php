@@ -609,17 +609,18 @@
                                                     </div>
                                                 </div>
 
-                                                <!-- Aksesoris Tampilan File Aktif & Tombol Hapus Mandiri -->
                                                 @if (!empty($settings['popup_banner_image']))
                                                     <div
-                                                        class="mt-3 p-3 border rounded-3 bg-light bg-opacity-50 d-flex justify-content-between align-items-center">
-                                                        <div class="d-flex align-items-center gap-2">
-                                                            <i class="bi bi-image text-success fs-5"></i>
-                                                            <span class="small fw-medium text-dark text-truncate"
-                                                                style="max-width: 320px;">{{ $settings['popup_banner_image'] }}</span>
+                                                        class="mt-3 p-3 border rounded-3 bg-light bg-opacity-50 d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3">
+                                                        <div class="d-flex align-items-center gap-2 text-truncate w-100"
+                                                            style="max-width: 100%;">
+                                                            <i class="bi bi-image text-success fs-5 flex-shrink-0"></i>
+                                                            <span class="small fw-medium text-dark text-truncate">
+                                                                {{ $settings['popup_banner_image'] }}
+                                                            </span>
                                                         </div>
                                                         <button type="button"
-                                                            class="btn btn-sm btn-outline-danger px-3 rounded-3 fw-medium"
+                                                            class="btn btn-sm btn-outline-danger px-3 rounded-3 fw-medium w-100 w-sm-auto flex-shrink-0"
                                                             style="font-size: 0.78rem;"
                                                             onclick="if(confirm('Apakah Anda yakin ingin menghapus dan menonaktifkan banner pengumuman ini?')) { document.getElementById('form-hapus-banner-independen').submit(); }">
                                                             <i class="bi bi-trash3 me-1"></i> Hapus Banner
@@ -887,7 +888,7 @@
                                 // Peringatan instan tanpa membebani loading server Hostinger
                                 alert(
                                     `Gagal: Ukuran file ${item.name} terlalu besar!\nMaksimal ukuran yang diperbolehkan adalah 10 MB.\n\nFile yang Anda pilih berukuran ${(fileSize / 1024 / 1024).toFixed(2)} MB.`
-                                    );
+                                );
 
                                 // Kosongkan kembali input file yang melanggar agar tidak ter-submit
                                 this.value = '';
@@ -943,7 +944,7 @@
                     if (fileSize > maxSizeBytes) {
                         alert(
                             `Gagal: Ukuran file Banner Pengumuman Beranda terlalu besar!\nMaksimal ukuran yang diperbolehkan adalah 10 MB.\n\nFile yang Anda lepas berukuran ${(fileSize / 1024 / 1024).toFixed(2)} MB.`
-                            );
+                        );
                         fileInput.value = '';
                         previewContainer.classList.add('d-none');
                         return;

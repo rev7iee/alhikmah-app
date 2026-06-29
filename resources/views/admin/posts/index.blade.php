@@ -593,8 +593,6 @@
                                         </option>
                                     </select>
                                 </div>
-                                <small class="text-muted small" style="font-size: 0.8rem;">Menampilkan data klasifikasi
-                                    berita utama</small>
                             </div>
                         </div>
                         <div class="col-md-4">
