@@ -427,6 +427,41 @@
                 display: block;
             }
         }
+
+        /* ======================================================== */
+        /* PERBAIKAN SIDEBAR FIXED & INDEPENDENT CONTENT SCROLL     */
+        /* ======================================================== */
+
+        @media (min-width: 992px) {
+
+            /* 1. Paksa Container Utama Mengunci Tinggi Layar Monitor */
+            .container-fluid.px-0 {
+                height: 100vh !important;
+                overflow: hidden !important;
+            }
+
+            .container-fluid.px-0>.row.g-0 {
+                height: 100vh !important;
+            }
+
+            /* 2. Buat Sidebar Menjadi Fixed/Statis Melalui Flexbox Tinggi Penuh */
+            .sidebar {
+                position: sticky !important;
+                top: 0;
+                height: 100vh !important;
+                overflow-y: auto;
+                /* Jika menu sidebar sangat banyak, ia bisa di-scroll sendiri */
+                z-index: 1030;
+            }
+
+            /* 3. Buat Area Konten Kanan Menjadi Independent Scrollable Box */
+            .col-md-9.col-lg-10.px-0.d-flex.flex-column {
+                height: 100vh !important;
+                overflow-y: auto !important;
+                /* Hanya area kanan ini yang akan berputar saat di-scroll */
+                -webkit-overflow-scrolling: touch;
+            }
+        }
     </style>
 </head>
 
