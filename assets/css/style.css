@@ -41,7 +41,7 @@ body {
 
 /* Pengaturan Ukuran Logo */
 .logo-navbar {
-    height: 46px; /* Naikkan ukuran tinggi logo sesuai seleramu */
+    height: 16px; /* Naikkan ukuran tinggi logo sesuai seleramu */
     width: auto;
     object-fit: contain;
     margin-top: -5px; /* Trik Pro: Menarik sedikit logo ke atas */
