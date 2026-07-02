@@ -39,13 +39,12 @@ body {
     background-color: #d6a206;
 }
 
-/* Pengaturan Ukuran Logo */
-.logo-navbar {
-    height: 16px; /* Naikkan ukuran tinggi logo sesuai seleramu */
-    width: auto;
-    object-fit: contain;
-    margin-top: -5px; /* Trik Pro: Menarik sedikit logo ke atas */
-    margin-bottom: -5px; /* Trik Pro: Menarik sedikit logo ke bawah */
+.navbar-brand .logo-navbar {
+    height: 45px !important; /* Kunci tinggi konstan yang ideal untuk area navbar */
+    width: auto !important; /* Biarkan lebar menyesuaikan rasio gambar secara otomatis */
+    max-width: 260px !important; /* Batasi lebar maksimal agar tidak menabrak tombol menu di HP */
+    object-fit: contain !important;
+    display: inline-block;
 }
 
 /* Mengunci tinggi komponen navbar agar tidak ikut membesar */
@@ -120,18 +119,14 @@ body {
     color: #444;
 }
 
-/* 1. Memperbesar ukuran logo footer tanpa mendorong elemen lain */
-.logo-footer {
-    height: 46px;
-    width: auto;
-    object-fit: contain;
-    margin-top: -6px;
-    margin-bottom: -6px;
-    /* TRIK FIX: Menggeser logo sedikit ke kiri agar sejajar lurus dengan teks di bawahnya */
-    margin-left: -21px;
-    transition: all 0.3s ease-in-out;
+/* 2. Pengaturan Logo di Footer (Bawah) */
+.main-footer .logo-footer {
+    height: 55px !important; /* Logo di footer diberikan sedikit lebih besar agar teks alamat bawah terbaca */
+    width: auto !important;
+    max-width: 300px !important;
+    object-fit: contain !important;
+    display: inline-block;
 }
-
 /* 2. Memastikan teks judul di sebelah logo footer tetap presisi di tengah secara vertikal */
 .main-footer .d-flex.align-items-center {
     align-items: center !important;
@@ -384,4 +379,17 @@ body {
 /* Efek angkat sedikit pada kartu berita saat di-hover */
 .card:hover {
     transform: translateY(-5px);
+}
+
+/* 3. Penyesuaian Responsif khusus Layar HP (Mobile Breakpoint) */
+@media (max-width: 575.98px) {
+    .navbar-brand .logo-navbar {
+        height: 38px !important; /* Sedikit diperkecil di HP sangat kecil agar tidak memakan ruang */
+        max-width: 200px !important;
+    }
+
+    .main-footer .logo-footer {
+        height: 48px !important;
+        max-width: 240px !important;
+    }
 }
