@@ -401,7 +401,8 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="d-flex align-items-center mb-3">
                             <!-- COMMENT UNTUK KODE GAMBAR LOGO FOOTER -->
-                            <img src="assets/images/logo-header.png" alt="Logo" class="logo-footer me-2" />
+                            <img src="assets/images/logo_header_alhikmah.png" alt="Logo"
+                                class="logo-footer me-2" />
                         </div>
                         <p class="small text-secondary">
                             Mewujudkan pondok pesantren Islam yang integratif, modern, dan
