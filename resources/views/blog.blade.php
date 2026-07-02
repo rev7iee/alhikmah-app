@@ -64,7 +64,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <img src="{{ asset('assets/images/logo-header.png') }}" alt="Logo Al Hikmah"
+                    <img src="{{ asset('assets/images/logo_header_alhikmah.png') }}" alt="Logo Al Hikmah"
                         class="logo-navbar me-2" onerror="this.src='https://via.placeholder.com/40?text=Logo'" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
