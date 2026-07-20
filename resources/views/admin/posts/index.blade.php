@@ -994,7 +994,7 @@
     <!-- Taruh CDN CKEditor ini tepat di atas script utama kamu -->
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
     <!-- CDN CKEditor 5 Klasik -->
-    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-build-classic@39.0.1/build/ckeditor.js"></script>
 
     <script>
         // SCRIPT FILTER KATEGORI OTOMATIS
@@ -1014,10 +1014,16 @@
             // Aktivasi CKEditor di Modal Tambah Berita
             ClassicEditor
                 .create(document.querySelector('#editor_tambah'), {
-                    toolbar: ['heading', '|', 'bold', 'italic', 'underline', 'strikethrough', '|',
-                        'bulletedList', 'numberedList', 'alignment', 'fontColor', 'fontBackgroundColor',
-                        '|', 'undo', 'redo'
-                    ]
+                    toolbar: {
+                        items: [
+                            'heading', '|',
+                            'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
+                            'bold', 'italic', 'underline', 'strikethrough', '|',
+                            'alignment', '|',
+                            'bulletedList', 'numberedList', '|',
+                            'undo', 'redo'
+                        ]
+                    }
                 })
                 .then(editor => {
                     editorTambahInstance = editor;
@@ -1029,10 +1035,16 @@
             // Aktivasi CKEditor di Modal Edit Berita
             ClassicEditor
                 .create(document.querySelector('#editor_edit'), {
-                    toolbar: ['heading', '|', 'bold', 'italic', 'underline', 'strikethrough', '|',
-                        'bulletedList', 'numberedList', 'alignment', 'fontColor', 'fontBackgroundColor',
-                        '|', 'undo', 'redo'
-                    ]
+                    toolbar: {
+                        items: [
+                            'heading', '|',
+                            'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
+                            'bold', 'italic', 'underline', 'strikethrough', '|',
+                            'alignment', '|',
+                            'bulletedList', 'numberedList', '|',
+                            'undo', 'redo'
+                        ]
+                    }
                 })
                 .then(editor => {
                     editorEditInstance = editor;
@@ -1040,7 +1052,6 @@
                 .catch(error => {
                     console.error(error);
                 });
-
 
             // --- VALIDASI INSTAN UKURAN GAMBAR (MAKSIMAL 12 MB) ---
             const maxSizeBytes = 12 * 1024 * 1024; // Konversi 12 MB ke Satuan Bytes
