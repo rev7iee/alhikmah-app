@@ -842,8 +842,8 @@
                         <div class="mb-3.5">
                             <label class="form-label small fw-bold text-secondary text-uppercase tracking-wider"
                                 style="font-size: 0.7rem;">Isi Dokumen Narasi Berita</label>
-                            <textarea name="content" class="form-control modal-input-custom" rows="7"
-                                placeholder="Tuliskan teks narasi lengkap di sini..." required></textarea>
+                            <textarea name="content" id="editor_tambah" class="form-control modal-input-custom" rows="7"
+                                placeholder="Tuliskan teks narasi lengkap di sini..."></textarea>
                         </div>
                         <div class="row g-3 mb-3.5">
                             <div class="col-md-6">
@@ -926,7 +926,7 @@
                         <div class="mb-3.5">
                             <label class="form-label small fw-bold text-secondary text-uppercase tracking-wider"
                                 style="font-size: 0.7rem;">Isi Dokumen Narasi Berita</label>
-                            <textarea name="content" id="edit_content" class="form-control modal-input-custom" rows="7" required></textarea>
+                            <textarea name="content" id="editor_edit" class="form-control modal-input-custom" rows="7"></textarea>
                         </div>
                         <div class="row g-3 mb-3.5">
                             <div class="col-md-6">
@@ -991,6 +991,11 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Taruh CDN CKEditor ini tepat di atas script utama kamu -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+    <!-- CDN CKEditor 5 Klasik -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+
     <script>
         // SCRIPT FILTER KATEGORI OTOMATIS
         function filterData(val) {
@@ -1002,6 +1007,41 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
+            // --- INISIALISASI VARIABEL GLOBAL CKEDITOR 5 ---
+            let editorTambahInstance;
+            let editorEditInstance;
+
+            // Aktivasi CKEditor di Modal Tambah Berita
+            ClassicEditor
+                .create(document.querySelector('#editor_tambah'), {
+                    toolbar: ['heading', '|', 'bold', 'italic', 'underline', 'strikethrough', '|',
+                        'bulletedList', 'numberedList', 'alignment', 'fontColor', 'fontBackgroundColor',
+                        '|', 'undo', 'redo'
+                    ]
+                })
+                .then(editor => {
+                    editorTambahInstance = editor;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+            // Aktivasi CKEditor di Modal Edit Berita
+            ClassicEditor
+                .create(document.querySelector('#editor_edit'), {
+                    toolbar: ['heading', '|', 'bold', 'italic', 'underline', 'strikethrough', '|',
+                        'bulletedList', 'numberedList', 'alignment', 'fontColor', 'fontBackgroundColor',
+                        '|', 'undo', 'redo'
+                    ]
+                })
+                .then(editor => {
+                    editorEditInstance = editor;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+
             // --- VALIDASI INSTAN UKURAN GAMBAR (MAKSIMAL 12 MB) ---
             const maxSizeBytes = 12 * 1024 * 1024; // Konversi 12 MB ke Satuan Bytes
             const fileInputs = [{
@@ -1020,7 +1060,6 @@
                     element: document.getElementById('input_extra_image_2'),
                     name: 'Extra Image 2'
                 },
-
                 {
                     element: document.getElementById('edit_input_thumbnail'),
                     name: 'Thumbnail (Edit)'
@@ -1058,6 +1097,7 @@
                     });
                 }
             });
+
             // LOGIKA MODAL EDIT
             const editButtons = document.querySelectorAll('.btn-edit-trigger');
             editButtons.forEach(button => {
@@ -1071,7 +1111,11 @@
                     document.getElementById('edit_title').value = title;
                     document.getElementById('edit_category').value = category;
                     document.getElementById('edit_hashtags').value = hashtags;
-                    document.getElementById('edit_content').value = content;
+
+                    // MEMASUKKAN ISI CONTENT SECARA AMAN KE CKEDITOR MODAL EDIT
+                    if (editorEditInstance) {
+                        editorEditInstance.setData(content);
+                    }
 
                     document.getElementById('formEditBerita').action = `/admin/posts/${id}`;
                 });
@@ -1090,6 +1134,7 @@
             });
         });
     </script>
+
     <!-- ========================================== -->
     <!-- SCRIPT JAVASCRIPT TOGGLE SIDEBAR MOBILE    -->
     <!-- ========================================== -->
@@ -1114,6 +1159,7 @@
     </script>
     <!-- Overlay Transparan Pendukung Sidebar Mobile -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
 </body>
 
 </html>
