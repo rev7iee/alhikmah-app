@@ -744,7 +744,7 @@
                                                 {{ $post->created_at->translatedFormat('d M Y') }}
                                             </td>
                                             <td class="text-center">
-                                                <div class="d-flex justify-content-center gap-1.5">
+                                                <div class="d-flex justify-content-center gap-2">
                                                     <button type="button"
                                                         class="btn btn-action-edit btn-edit-trigger"
                                                         data-bs-toggle="modal" data-bs-target="#modalEditBerita"
@@ -976,7 +976,7 @@
                     </p>
                     <form id="formHapusBerita" method="POST">
                         @csrf
-                        <div class="d-flex gap-2.5 justify-content-center">
+                        <div class="d-flex gap-3 justify-content-center">
                             <button type="button"
                                 class="btn btn-light px-4 py-2.5 rounded-3 fw-medium small w-50 text-secondary"
                                 data-bs-dismiss="modal">Batal</button>
