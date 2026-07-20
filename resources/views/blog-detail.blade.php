@@ -86,16 +86,27 @@
                             <div class="row g-3 my-4">
                                 @if (!empty($post->extra_image_1))
                                     <div class="{{ !empty($post->extra_image_2) ? 'col-md-6' : 'col-12' }}">
-                                        <img src="{{ asset('assets/images/news/' . $post->extra_image_1) }}"
-                                            class="img-fluid rounded-3 shadow-sm w-100"
-                                            style="max-height: 300px; object-fit: cover;" alt="Dokumentasi 1">
+                                        <!-- Frame / Bingkai Gambar 1 -->
+                                        <div class="p-2 bg-white border rounded-4 shadow-sm">
+                                            <div class="ratio ratio-4x3 overflow-hidden rounded-3">
+                                                <img src="{{ asset('assets/images/news/' . $post->extra_image_1) }}"
+                                                    style="object-fit: cover; width: 100%; height: 100%;"
+                                                    alt="Dokumentasi Berita 1">
+                                            </div>
+                                        </div>
                                     </div>
                                 @endif
+
                                 @if (!empty($post->extra_image_2))
                                     <div class="{{ !empty($post->extra_image_1) ? 'col-md-6' : 'col-12' }}">
-                                        <img src="{{ asset('assets/images/news/' . $post->extra_image_2) }}"
-                                            class="img-fluid rounded-3 shadow-sm w-100"
-                                            style="max-height: 300px; object-fit: cover;" alt="Dokumentasi 2">
+                                        <!-- Frame / Bingkai Gambar 2 -->
+                                        <div class="p-2 bg-white border rounded-4 shadow-sm">
+                                            <div class="ratio ratio-4x3 overflow-hidden rounded-3">
+                                                <img src="{{ asset('assets/images/news/' . $post->extra_image_2) }}"
+                                                    style="object-fit: cover; width: 100%; height: 100%;"
+                                                    alt="Dokumentasi Berita 2">
+                                            </div>
+                                        </div>
                                     </div>
                                 @endif
                             </div>
