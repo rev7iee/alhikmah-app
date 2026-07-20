@@ -202,7 +202,7 @@
                             modern berkualitas untuk mencetak cendekiawan Muslim yang unggul secara intelektual dan
                             spiritual.</p>
                         <div class="d-flex flex-wrap gap-3">
-                            <a href="#" class="btn btn-accent px-4 py-2">Pelajari Lebih Lanjut</a>
+                            <a href="{{ url('/profil') }}" class="btn btn-accent px-4 py-2">Pelajari Lebih Lanjut</a>
                             @if (!empty($settings['video_profil_url']))
                                 <button type="button"
                                     class="btn btn-outline-custom px-4 py-2 d-flex align-items-center"
