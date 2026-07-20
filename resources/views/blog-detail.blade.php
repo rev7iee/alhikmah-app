@@ -82,18 +82,18 @@
                             {!! $post->content !!}
                         </div>
 
-                        @if (!empty($post->image_1) || !empty($post->image_2))
+                        @if (!empty($post->extra_image_1) || !empty($post->extra_image_2))
                             <div class="row g-3 my-4">
-                                @if (!empty($post->image_1))
-                                    <div class="{{ !empty($post->image_2) ? 'col-md-6' : 'col-12' }}">
-                                        <img src="{{ asset('assets/images/news/' . $post->image_1) }}"
+                                @if (!empty($post->extra_image_1))
+                                    <div class="{{ !empty($post->extra_image_2) ? 'col-md-6' : 'col-12' }}">
+                                        <img src="{{ asset('assets/images/news/' . $post->extra_image_1) }}"
                                             class="img-fluid rounded-3 shadow-sm w-100"
                                             style="max-height: 300px; object-fit: cover;" alt="Dokumentasi 1">
                                     </div>
                                 @endif
-                                @if (!empty($post->image_2))
-                                    <div class="{{ !empty($post->image_1) ? 'col-md-6' : 'col-12' }}">
-                                        <img src="{{ asset('assets/images/news/' . $post->image_2) }}"
+                                @if (!empty($post->extra_image_2))
+                                    <div class="{{ !empty($post->extra_image_1) ? 'col-md-6' : 'col-12' }}">
+                                        <img src="{{ asset('assets/images/news/' . $post->extra_image_2) }}"
                                             class="img-fluid rounded-3 shadow-sm w-100"
                                             style="max-height: 300px; object-fit: cover;" alt="Dokumentasi 2">
                                     </div>
