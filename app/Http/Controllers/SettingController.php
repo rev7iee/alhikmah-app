@@ -20,6 +20,9 @@ class SettingController extends Controller
         $request->validate([
             'popup_banner_image' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
             'program_1_image' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
+            'program_2_image' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
+            'program_3_image' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
+            'program_4_image' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
             'pondok_campus_image' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
         ], [
             'image' => 'File harus berupa gambar.',

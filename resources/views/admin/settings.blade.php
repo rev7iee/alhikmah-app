@@ -800,6 +800,19 @@
                                                         Singkat</label>
                                                     <textarea name="program_2_desc" id="editor_program_2" class="form-control input-box-premium" rows="4">{{ $settings['program_2_desc'] ?? '' }}</textarea>
                                                 </div>
+                                                <div class="mt-3">
+                                                    <label class="form-label small text-muted mb-1">Ganti File
+                                                        Ilustrasi Gambar Program 2</label>
+                                                    <input type="file" name="program_2_image" id="program_2_input"
+                                                        class="form-control input-box-premium" accept="image/*">
+                                                    @if (!empty($settings['program_2_image']))
+                                                        <small class="text-success d-block mt-1 fw-medium"
+                                                            style="font-size: 0.75rem;">
+                                                            <i class="bi bi-paperclip"></i> File aktif:
+                                                            {{ $settings['program_2_image'] }}
+                                                        </small>
+                                                    @endif
+                                                </div>
                                             </div>
 
                                             <!-- LOOP PROGRAM CONTAINER 3 -->
@@ -826,6 +839,19 @@
                                                         Singkat</label>
                                                     <textarea name="program_3_desc" id="editor_program_3" class="form-control input-box-premium" rows="4">{{ $settings['program_3_desc'] ?? '' }}</textarea>
                                                 </div>
+                                                <div class="mt-3">
+                                                    <label class="form-label small text-muted mb-1">Ganti File
+                                                        Ilustrasi Gambar Program 3</label>
+                                                    <input type="file" name="program_3_image" id="program_3_input"
+                                                        class="form-control input-box-premium" accept="image/*">
+                                                    @if (!empty($settings['program_3_image']))
+                                                        <small class="text-success d-block mt-1 fw-medium"
+                                                            style="font-size: 0.75rem;">
+                                                            <i class="bi bi-paperclip"></i> File aktif:
+                                                            {{ $settings['program_3_image'] }}
+                                                        </small>
+                                                    @endif
+                                                </div>
                                             </div>
 
                                             <!-- LOOP PROGRAM CONTAINER 4 -->
@@ -850,6 +876,19 @@
                                                     <label class="form-label small text-muted mb-1">Deskripsi
                                                         Singkat</label>
                                                     <textarea name="program_4_desc" id="editor_program_4" class="form-control input-box-premium" rows="4">{{ $settings['program_4_desc'] ?? '' }}</textarea>
+                                                </div>
+                                                <div class="mt-3">
+                                                    <label class="form-label small text-muted mb-1">Ganti File
+                                                        Ilustrasi Gambar Program 4</label>
+                                                    <input type="file" name="program_4_image" id="program_4_input"
+                                                        class="form-control input-box-premium" accept="image/*">
+                                                    @if (!empty($settings['program_4_image']))
+                                                        <small class="text-success d-block mt-1 fw-medium"
+                                                            style="font-size: 0.75rem;">
+                                                            <i class="bi bi-paperclip"></i> File aktif:
+                                                            {{ $settings['program_4_image'] }}
+                                                        </small>
+                                                    @endif
                                                 </div>
                                             </div>
 
