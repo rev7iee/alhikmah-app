@@ -82,6 +82,10 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/admin-login', [AuthController::class, 'login']);
 });
 
+Route::get('/program/detail/{id}', function ($id) {
+    $settings = Setting::pluck('value', 'key')->toArray();
+    return view('program-detail', compact('settings', 'id'));
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -126,10 +130,6 @@ Route::middleware(['auth'])->group(function () {
     //     return view('program', compact('settings'));
     // });
 
-    Route::get('/program/detail/{id}', function ($id) {
-        $settings = Setting::pluck('value', 'key')->toArray();
-        return view('program-detail', compact('settings', 'id'));
-    });
 
 });
 
