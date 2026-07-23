@@ -757,11 +757,6 @@
                                                             value="{{ $settings['program_1_title'] ?? '' }}">
                                                     </div>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label small text-muted mb-1">Deskripsi
-                                                        Singkat</label>
-                                                    <textarea name="program_1_desc" id="editor_program_1" class="form-control input-box-premium" rows="4">{{ $settings['program_1_desc'] ?? '' }}</textarea>
-                                                </div>
                                                 <div>
                                                     <label class="form-label small text-muted mb-1">Ganti File
                                                         Ilustrasi Gambar</label>
@@ -773,6 +768,11 @@
                                                                 class="bi bi-paperclip"></i> File aktif:
                                                             {{ $settings['program_1_image'] }}</small>
                                                     @endif
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label small text-muted mb-1">Deskripsi
+                                                        Singkat</label>
+                                                    <textarea name="program_1_desc" id="editor_program_1" class="form-control input-box-premium" rows="4">{{ $settings['program_1_desc'] ?? '' }}</textarea>
                                                 </div>
                                             </div>
 
@@ -795,11 +795,6 @@
                                                             value="{{ $settings['program_2_title'] ?? '' }}">
                                                     </div>
                                                 </div>
-                                                <div class="mb-0">
-                                                    <label class="form-label small text-muted mb-1">Deskripsi
-                                                        Singkat</label>
-                                                    <textarea name="program_2_desc" id="editor_program_2" class="form-control input-box-premium" rows="4">{{ $settings['program_2_desc'] ?? '' }}</textarea>
-                                                </div>
                                                 <div class="mt-3">
                                                     <label class="form-label small text-muted mb-1">Ganti File
                                                         Ilustrasi Gambar Program 2</label>
@@ -812,6 +807,11 @@
                                                             {{ $settings['program_2_image'] }}
                                                         </small>
                                                     @endif
+                                                </div>
+                                                <div class="mb-0">
+                                                    <label class="form-label small text-muted mb-1">Deskripsi
+                                                        Singkat</label>
+                                                    <textarea name="program_2_desc" id="editor_program_2" class="form-control input-box-premium" rows="4">{{ $settings['program_2_desc'] ?? '' }}</textarea>
                                                 </div>
                                             </div>
 
@@ -834,11 +834,6 @@
                                                             value="{{ $settings['program_3_title'] ?? '' }}">
                                                     </div>
                                                 </div>
-                                                <div class="mb-0">
-                                                    <label class="form-label small text-muted mb-1">Deskripsi
-                                                        Singkat</label>
-                                                    <textarea name="program_3_desc" id="editor_program_3" class="form-control input-box-premium" rows="4">{{ $settings['program_3_desc'] ?? '' }}</textarea>
-                                                </div>
                                                 <div class="mt-3">
                                                     <label class="form-label small text-muted mb-1">Ganti File
                                                         Ilustrasi Gambar Program 3</label>
@@ -851,6 +846,11 @@
                                                             {{ $settings['program_3_image'] }}
                                                         </small>
                                                     @endif
+                                                </div>
+                                                <div class="mb-0">
+                                                    <label class="form-label small text-muted mb-1">Deskripsi
+                                                        Singkat</label>
+                                                    <textarea name="program_3_desc" id="editor_program_3" class="form-control input-box-premium" rows="4">{{ $settings['program_3_desc'] ?? '' }}</textarea>
                                                 </div>
                                             </div>
 
@@ -872,11 +872,6 @@
                                                             value="{{ $settings['program_4_title'] ?? '' }}">
                                                     </div>
                                                 </div>
-                                                <div class="mb-0">
-                                                    <label class="form-label small text-muted mb-1">Deskripsi
-                                                        Singkat</label>
-                                                    <textarea name="program_4_desc" id="editor_program_4" class="form-control input-box-premium" rows="4">{{ $settings['program_4_desc'] ?? '' }}</textarea>
-                                                </div>
                                                 <div class="mt-3">
                                                     <label class="form-label small text-muted mb-1">Ganti File
                                                         Ilustrasi Gambar Program 4</label>
@@ -889,6 +884,11 @@
                                                             {{ $settings['program_4_image'] }}
                                                         </small>
                                                     @endif
+                                                </div>
+                                                <div class="mb-0">
+                                                    <label class="form-label small text-muted mb-1">Deskripsi
+                                                        Singkat</label>
+                                                    <textarea name="program_4_desc" id="editor_program_4" class="form-control input-box-premium" rows="4">{{ $settings['program_4_desc'] ?? '' }}</textarea>
                                                 </div>
                                             </div>
 
