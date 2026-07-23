@@ -47,15 +47,6 @@
                     <h1 class="fw-bold text-dark mb-4 display-6">
                         {{ $settings['program_' . $id . '_title'] ?? 'Program Unggulan' }}</h1>
 
-                    @if (!empty($settings['program_' . $id . '_image']))
-                        <div class="p-2 bg-white border rounded-4 shadow-sm mb-4">
-                            <div class="ratio ratio-16x9 overflow-hidden rounded-3">
-                                <img src="{{ asset('assets/images/' . $settings['program_' . $id . '_image']) }}"
-                                    style="object-fit: cover;" alt="Ilustrasi Program">
-                            </div>
-                        </div>
-                    @endif
-
                     <div class="text-secondary leading-relaxed" style="line-height: 1.8; text-align: justify;">
                         {!! $settings['program_' . $id . '_desc'] ?? 'Deskripsi lengkap program belum diisi.' !!}
                     </div>
