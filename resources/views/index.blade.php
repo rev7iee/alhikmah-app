@@ -228,61 +228,109 @@
                 </div>
 
                 <div class="row g-4">
-                    <div class="col-md-8">
-                        <div class="card h-100 border-0 shadow-sm p-4 d-flex flex-column justify-content-end text-dark rounded-4"
-                            style="background: linear-gradient(rgba(245, 245, 245, 0.88), rgba(245, 245, 245, 0.88)), 
-                            url('{{ !empty($settings['program_1_image']) ? asset('assets/images/' . $settings['program_1_image']) : asset('assets/images/program-beranda.jpg') }}') no-repeat center center/cover; min-height: 240px;">
+                    <!-- PROGRAM 1 -->
+                    <div class="col-md-6 col-lg-3">
+                        <div
+                            class="card h-100 border-0 shadow-sm p-4 d-flex flex-column justify-content-between rounded-4 bg-light">
                             <div>
-                                <h4 class="fw-bold text-dark">{{ $settings['program_1_title'] ?? "Tahfidhul Qur'an" }}
-                                </h4>
-                                <p class="mb-0 text-secondary w-75">
-                                    {{ $settings['program_1_desc'] ?? 'Metode menghafal Al-Qur\'an teruji dengan target mutqin, fokus pada tajwid dan pemahaman makna.' }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card h-100 border-0 shadow-sm p-4 bg-success text-white d-flex flex-column justify-content-between rounded-4"
-                            style="background-color: var(--light-green) !important;">
-                            <div class="fs-2 mb-3"><i class="bi bi-book text-warning"></i></div>
-                            <div>
-                                <h4 class="fw-bold">{{ $settings['program_2_title'] ?? 'Kajian Kitab Kuning' }}</h4>
-                                <p class="mb-0 opacity-90 text-white-50 small">
-                                    {{ $settings['program_2_desc'] ?? 'Pendalaman literatur klasik Islam dengan metodologi kritis untuk menjawab tantangan zaman.' }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card h-100 border-0 shadow-sm p-4 d-flex flex-column justify-content-between rounded-4"
-                            style="background-color: var(--bg-blue-light) !important;">
-                            <div class="fs-2 mb-3 text-primary"><i class="bi bi-translate"></i></div>
-                            <div>
-                                <h4 class="fw-bold text-dark">{{ $settings['program_3_title'] ?? 'Bilingual Mastery' }}
-                                </h4>
-                                <p class="mb-0 text-secondary small">
-                                    {{ $settings['program_3_desc'] ?? 'Penguasaan bahasa Arab dan Inggris sebagai alat utama komunikasi global dan kajian Islam.' }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-8">
-                        <div class="card h-100 border-0 shadow-sm p-4 bg-white d-flex flex-column justify-content-center rounded-4"
-                            style="border: 1px solid #e2e8f0 !important;">
-                            <div class="row align-items-center">
-                                <div class="col-sm-2 d-none d-sm-block text-center fs-1 text-success opacity-50"><i
-                                        class="bi bi-cpu"></i></div>
-                                <div class="col-sm-10">
-                                    <h4 class="fw-bold text-dark">
-                                        {{ $settings['program_4_title'] ?? 'Sains & Teknologi' }}</h4>
-                                    <p class="mb-0 text-secondary">
-                                        {{ $settings['program_4_desc'] ?? 'Integrasi ilmu alam dan teknologi digital dalam bingkai etika keislaman yang kuat.' }}
-                                    </p>
+                                <span
+                                    class="badge bg-success bg-opacity-10 text-success mb-3 px-3 py-2 rounded-pill small fw-bold">Program
+                                    01</span>
+                                <h4 class="fw-bold text-dark mb-3">
+                                    {{ $settings['program_1_title'] ?? "Tahfidhul Qur'an" }}</h4>
+                                <div class="text-secondary small mb-4 line-clamp-3">
+                                    {!! \Str::limit(
+                                        strip_tags(
+                                            $settings['program_1_desc'] ??
+                                                'Metode menghafal Al-Qur\'an teruji dengan target mutqin, fokus pada tajwid dan pemahaman makna.',
+                                        ),
+                                        120,
+                                    ) !!}
                                 </div>
                             </div>
+                            <a href="{{ url('/program/detail/1') }}"
+                                class="text-success fw-semibold text-decoration-none small d-inline-flex align-items-center gap-1">
+                                Pelajari Program <i class="bi bi-arrow-right" style="font-size: 0.8rem;"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- PROGRAM 2 -->
+                    <div class="col-md-6 col-lg-3">
+                        <div
+                            class="card h-100 border-0 shadow-sm p-4 d-flex flex-column justify-content-between rounded-4 bg-light">
+                            <div>
+                                <span
+                                    class="badge bg-success bg-opacity-10 text-success mb-3 px-3 py-2 rounded-pill small fw-bold">Program
+                                    02</span>
+                                <h4 class="fw-bold text-dark mb-3">
+                                    {{ $settings['program_2_title'] ?? 'Kajian Kitab Kuning' }}</h4>
+                                <div class="text-secondary small mb-4 line-clamp-3">
+                                    {!! \Str::limit(
+                                        strip_tags(
+                                            $settings['program_2_desc'] ??
+                                                'Pendalaman literatur klasik Islam dengan metodologi kritis untuk menjawab tantangan zaman.',
+                                        ),
+                                        120,
+                                    ) !!}
+                                </div>
+                            </div>
+                            <a href="{{ url('/program/detail/2') }}"
+                                class="text-success fw-semibold text-decoration-none small d-inline-flex align-items-center gap-1">
+                                Pelajari Program <i class="bi bi-arrow-right" style="font-size: 0.8rem;"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- PROGRAM 3 -->
+                    <div class="col-md-6 col-lg-3">
+                        <div
+                            class="card h-100 border-0 shadow-sm p-4 d-flex flex-column justify-content-between rounded-4 bg-light">
+                            <div>
+                                <span
+                                    class="badge bg-success bg-opacity-10 text-success mb-3 px-3 py-2 rounded-pill small fw-bold">Program
+                                    03</span>
+                                <h4 class="fw-bold text-dark mb-3">
+                                    {{ $settings['program_3_title'] ?? 'Bilingual Mastery' }}</h4>
+                                <div class="text-secondary small mb-4 line-clamp-3">
+                                    {!! \Str::limit(
+                                        strip_tags(
+                                            $settings['program_3_desc'] ?? 'Penguasaan bahasa Arab dan Inggris sebagai alat utama komunikasi global.',
+                                        ),
+                                        120,
+                                    ) !!}
+                                </div>
+                            </div>
+                            <a href="{{ url('/program/detail/3') }}"
+                                class="text-success fw-semibold text-decoration-none small d-inline-flex align-items-center gap-1">
+                                Pelajari Program <i class="bi bi-arrow-right" style="font-size: 0.8rem;"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- PROGRAM 4 -->
+                    <div class="col-md-6 col-lg-3">
+                        <div
+                            class="card h-100 border-0 shadow-sm p-4 d-flex flex-column justify-content-between rounded-4 bg-light">
+                            <div>
+                                <span
+                                    class="badge bg-success bg-opacity-10 text-success mb-3 px-3 py-2 rounded-pill small fw-bold">Program
+                                    04</span>
+                                <h4 class="fw-bold text-dark mb-3">
+                                    {{ $settings['program_4_title'] ?? 'Sains & Teknologi' }}</h4>
+                                <div class="text-secondary small mb-4 line-clamp-3">
+                                    {!! \Str::limit(
+                                        strip_tags(
+                                            $settings['program_4_desc'] ?? 'Integrasi ilmu alam dan teknologi digital dalam bingkai etika keislaman.',
+                                        ),
+                                        120,
+                                    ) !!}
+                                </div>
+                            </div>
+                            <a href="{{ url('/program/detail/4') }}"
+                                class="text-success fw-semibold text-decoration-none small d-inline-flex align-items-center gap-1">
+                                Pelajari Program <i class="bi bi-arrow-right" style="font-size: 0.8rem;"></i>
+                            </a>
                         </div>
                     </div>
                 </div>

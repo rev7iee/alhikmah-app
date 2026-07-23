@@ -120,6 +120,17 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/posts/{id}', [PostController::class, 'update'])->name('admin.posts.update');
     Route::post('/admin/posts/{id}/delete', [PostController::class, 'destroy'])->name('admin.posts.destroy');
 
+    // --- HALAMAN PROGRAM UNGGULAN PUBLIK ---
+    // Route::get('/program', function () {
+    //     $settings = Setting::pluck('value', 'key')->toArray();
+    //     return view('program', compact('settings'));
+    // });
+
+    Route::get('/program/detail/{id}', function ($id) {
+        $settings = Setting::pluck('value', 'key')->toArray();
+        return view('program-detail', compact('settings', 'id'));
+    });
+
 });
 
 Route::get('/clear-cache', function () {

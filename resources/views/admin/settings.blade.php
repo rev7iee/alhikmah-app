@@ -760,8 +760,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label small text-muted mb-1">Deskripsi
                                                         Singkat</label>
-                                                    <textarea name="program_1_desc" class="form-control input-box-premium" rows="3"
-                                                        placeholder="Tuliskan ringkasan program..." style="resize: none;">{{ $settings['program_1_desc'] ?? '' }}</textarea>
+                                                    <textarea name="program_1_desc" id="editor_program_1" class="form-control input-box-premium" rows="4">{{ $settings['program_1_desc'] ?? '' }}</textarea>
                                                 </div>
                                                 <div>
                                                     <label class="form-label small text-muted mb-1">Ganti File
@@ -799,7 +798,7 @@
                                                 <div class="mb-0">
                                                     <label class="form-label small text-muted mb-1">Deskripsi
                                                         Singkat</label>
-                                                    <textarea name="program_2_desc" class="form-control input-box-premium" rows="3" style="resize: none;">{{ $settings['program_2_desc'] ?? '' }}</textarea>
+                                                    <textarea name="program_2_desc" id="editor_program_2" class="form-control input-box-premium" rows="4">{{ $settings['program_2_desc'] ?? '' }}</textarea>
                                                 </div>
                                             </div>
 
@@ -825,7 +824,7 @@
                                                 <div class="mb-0">
                                                     <label class="form-label small text-muted mb-1">Deskripsi
                                                         Singkat</label>
-                                                    <textarea name="program_3_desc" class="form-control input-box-premium" rows="3" style="resize: none;">{{ $settings['program_3_desc'] ?? '' }}</textarea>
+                                                    <textarea name="program_3_desc" id="editor_program_3" class="form-control input-box-premium" rows="4">{{ $settings['program_3_desc'] ?? '' }}</textarea>
                                                 </div>
                                             </div>
 
@@ -850,7 +849,7 @@
                                                 <div class="mb-0">
                                                     <label class="form-label small text-muted mb-1">Deskripsi
                                                         Singkat</label>
-                                                    <textarea name="program_4_desc" class="form-control input-box-premium" rows="3" style="resize: none;">{{ $settings['program_4_desc'] ?? '' }}</textarea>
+                                                    <textarea name="program_4_desc" id="editor_program_4" class="form-control input-box-premium" rows="4">{{ $settings['program_4_desc'] ?? '' }}</textarea>
                                                 </div>
                                             </div>
 
@@ -944,6 +943,7 @@
 
     <!-- Bootstrap 5 Bundle JS via CDN -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -952,6 +952,23 @@
             const previewContainer = document.getElementById('preview-container');
             const imagePreview = document.getElementById('image-preview');
             const fileNamePreview = document.getElementById('file-name-preview');
+            const programEditors = ['#editor_program_1', '#editor_program_2', '#editor_program_3',
+                '#editor_program_4'
+            ];
+
+            programEditors.forEach(selector => {
+                if (document.querySelector(selector)) {
+                    ClassicEditor
+                        .create(document.querySelector(selector), {
+                            toolbar: ['heading', '|', 'bold', 'italic', 'underline', '|',
+                                'bulletedList', 'numberedList', 'alignment', '|', 'undo', 'redo'
+                            ]
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                }
+            });
 
             // --- VALIDASI INSTAN UKURAN GAMBAR SETTING (MAKSIMAL 10 MB) ---
             const maxSizeBytes = 10 * 1024 * 1024; // 10 MB dalam satuan Bytes
