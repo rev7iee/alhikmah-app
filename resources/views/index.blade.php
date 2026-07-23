@@ -248,7 +248,7 @@
                                     ) !!}
                                 </div>
                             </div>
-                            <a href="{{ url('/program/detail/' . $settings->id) }}"
+                            <a href="{{ url('/program/detail/1') }}"
                                 class="text-success fw-semibold text-decoration-none small d-inline-flex align-items-center gap-1">
                                 Pelajari Program <i class="bi bi-arrow-right" style="font-size: 0.8rem;"></i>
                             </a>
