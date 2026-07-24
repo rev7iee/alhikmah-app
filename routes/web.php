@@ -144,3 +144,13 @@ Route::get('/clear-cache', function () {
         return "Gagal membersihkan: " . $e->getMessage();
     }
 });
+
+// RUTE SAKTI MIGRASI DATABASE HOSTER
+Route::get('/run-migration', function () {
+    try {
+        \Artisan::call('migrate', ['--force' => true]);
+        return "✅ HORE! Tabel 'galleries' berhasil dibuat secara otomatis di Database Hostinger!";
+    } catch (\Exception $e) {
+        return "❌ Gagal migrasi: " . $e->getMessage();
+    }
+});
