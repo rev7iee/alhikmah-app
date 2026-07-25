@@ -590,7 +590,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('admin.galleries.index') }}"><i
+                            <a class="nav-link" href="{{ route('admin.galleries.index') }}"><i
                                     class="bi bi-images me-3"></i> Postingan Galeri
                             </a>
                         </li>
