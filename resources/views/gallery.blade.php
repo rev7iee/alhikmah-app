@@ -40,7 +40,7 @@
     <main class="container my-5 py-3">
         <div class="text-center mb-5">
             <span
-                class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill small fw-bold uppercase">Dokumentasi
+                class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill small fw-bold text-uppercase">Dokumentasi
                 Visual</span>
             <h2 class="fw-bold text-dark mt-2">Galeri Foto Kegiatan</h2>
             <p class="text-muted">Potret aktivitas santri dan momentum penting di Pondok Pesantren Al Hikmah.</p>
@@ -49,15 +49,22 @@
         <div class="row g-4">
             @forelse($photos as $photo)
                 <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden bg-white">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden bg-white hover-card"
+                        style="cursor: pointer;"
+                        onclick="openPhotoModal('{{ asset('assets/images/gallery/' . $photo->file_or_link) }}', '{{ addslashes($photo->title) }}', '{{ addslashes($photo->caption ?? '') }}')">
                         <div class="ratio ratio-4x3">
                             <img src="{{ asset('assets/images/gallery/' . $photo->file_or_link) }}"
                                 style="object-fit:cover;" alt="{{ $photo->title }}">
                         </div>
-                        <div class="card-body p-4">
-                            <h5 class="fw-bold text-dark mb-1">{{ $photo->title }}</h5>
-                            <p class="text-secondary small mb-0">
-                                {{ $photo->caption ?? 'Dokumentasi resmi Al Hikmah.' }}</p>
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="fw-bold text-dark mb-2">{{ $photo->title }}</h5>
+                                <p class="text-secondary small mb-0 line-clamp-2">
+                                    {{ \Str::limit($photo->caption, 80) ?? 'Dokumentasi resmi Al Hikmah.' }}
+                                </p>
+                            </div>
+                            <span class="text-success fw-semibold small mt-3 d-inline-block">Lihat Selengkapnya <i
+                                    class="bi bi-arrow-right"></i></span>
                         </div>
                     </div>
                 </div>
@@ -69,12 +76,42 @@
         <div class="mt-5 d-flex justify-content-center">{{ $photos->links('pagination::bootstrap-5') }}</div>
     </main>
 
+    <!-- POP-UP MODAL DETAIL FOTO -->
+    <div class="modal fade" id="photoDetailModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 rounded-4 overflow-hidden shadow-lg">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold text-dark" id="modalPhotoTitle">Detail Foto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <img id="modalPhotoImage" src="" class="img-fluid rounded-3 mb-3 shadow-sm"
+                        style="max-height: 500px; width: 100%; object-fit: contain;">
+                    <p id="modalPhotoCaption" class="text-secondary small text-start bg-light p-3 rounded-3 mb-0"
+                        style="white-space: pre-line; line-height: 1.6;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <footer class="main-footer pt-5 pb-3 bg-white border-top">
         <div class="container text-center text-secondary small">
             <p>&copy; 2026 Pondok Pesantren Al Hikmah. All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function openPhotoModal(imageUrl, title, caption) {
+            document.getElementById('modalPhotoImage').src = imageUrl;
+            document.getElementById('modalPhotoTitle').innerText = title;
+            document.getElementById('modalPhotoCaption').innerText = caption || 'Tidak ada keterangan tambahan.';
+
+            let modal = new bootstrap.Modal(document.getElementById('photoDetailModal'));
+            modal.show();
+        }
+    </script>
 </body>
 
 </html>

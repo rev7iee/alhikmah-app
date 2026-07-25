@@ -18,18 +18,20 @@ class GalleryController extends Controller
     // Simpan Data Baru (Foto atau Video)
     public function store(Request $request)
     {
+        // Pada method store() dan update():
         $request->validate([
             'title' => 'required|string|max:255',
             'type' => 'required|in:image,video',
             'image_file' => 'required_if:type,image|nullable|image|mimes:jpeg,png,jpg|max:10240',
             'video_link' => 'required_if:type,video|nullable|url',
-            'caption' => 'nullable|string'
+            'caption' => 'nullable|string|max:500' // Pembatasan maksimal 500 karakter
         ], [
             'required' => 'Kolom ini wajib diisi.',
             'required_if' => 'File gambar/link video wajib diisi sesuai tipe yang dipilih.',
             'image' => 'File harus berupa gambar.',
             'mimes' => 'Format gambar harus jpeg, png, atau jpg.',
             'max' => 'Ukuran gambar maksimal adalah 10 MB.',
+            'caption.max' => 'Caption/keterangan maksimal 500 karakter.',
             'url' => 'Format link URL video tidak valid.'
         ]);
 
@@ -62,12 +64,15 @@ class GalleryController extends Controller
     {
         $gallery = Gallery::findOrFail($id);
 
+        // Pada method store() dan update():
         $request->validate([
             'title' => 'required|string|max:255',
             'type' => 'required|in:image,video',
-            'image_file' => 'nullable|image|mimes:jpeg,png,jpg|max:10240',
-            'video_link' => 'nullable|url',
-            'caption' => 'nullable|string'
+            'image_file' => 'required_if:type,image|nullable|image|mimes:jpeg,png,jpg|max:10240',
+            'video_link' => 'required_if:type,video|nullable|url',
+            'caption' => 'nullable|string|max:500' // Pembatasan maksimal 500 karakter
+        ], [
+            'caption.max' => 'Caption/keterangan maksimal 500 karakter.'
         ]);
 
         $data = [

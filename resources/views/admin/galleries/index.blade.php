@@ -235,8 +235,21 @@
                                                         class="rounded shadow-sm"
                                                         style="width:65px; height:45px; object-fit:cover;">
                                                 @else
-                                                    <span class="badge bg-danger rounded-pill px-3 py-2"><i
-                                                            class="bi bi-play-circle-fill me-1"></i> YouTube</span>
+                                                    @php
+                                                        preg_match(
+                                                            '/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/',
+                                                            $item->file_or_link,
+                                                            $matches,
+                                                        );
+                                                        $youtubeId = $matches[1] ?? '';
+                                                    @endphp
+                                                    @if ($youtubeId)
+                                                        <img src="https://img.youtube.com/vi/{{ $youtubeId }}/hqdefault.jpg"
+                                                            class="rounded shadow-sm"
+                                                            style="width:65px; height:45px; object-fit:cover;">
+                                                    @else
+                                                        <span class="badge bg-danger">YouTube</span>
+                                                    @endif
                                                 @endif
                                             </td>
                                             <td class="fw-semibold text-dark">{{ $item->title }}</td>
@@ -333,7 +346,7 @@
                         <div class="mb-0">
                             <label class="form-label small fw-bold text-secondary text-uppercase">Caption / Keterangan
                                 Teks (Opsional)</label>
-                            <textarea name="caption" class="form-control modal-input-custom" rows="3"
+                            <textarea name="caption" maxlength="500" class="form-control modal-input-custom" rows="3"
                                 placeholder="Tuliskan keterangan foto..."></textarea>
                         </div>
                     </div>
@@ -378,7 +391,7 @@
                         <div class="mb-0">
                             <label class="form-label small fw-bold text-secondary text-uppercase">Caption / Keterangan
                                 Teks (Opsional)</label>
-                            <textarea name="caption" class="form-control modal-input-custom" rows="3"
+                            <textarea name="caption" maxlength="500" class="form-control modal-input-custom" rows="3"
                                 placeholder="Tuliskan keterangan ringkas video..."></textarea>
                         </div>
                     </div>
