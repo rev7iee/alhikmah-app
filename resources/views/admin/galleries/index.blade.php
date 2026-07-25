@@ -93,14 +93,26 @@
                         <span class="text-white-50 small text-uppercase">Pondok Pesantren</span>
                     </div>
                     <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.dashboard') }}"><i
-                                    class="bi bi-columns-gap me-3"></i> Dashboard</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.posts.index') }}"><i
-                                    class="bi bi-collection me-3"></i> Postingan</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="{{ route('admin.galleries.index') }}"><i
-                                    class="bi bi-images me-3"></i> Postingan Galeri</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('admin.settings') }}"><i
-                                    class="bi bi-sliders2 me-3"></i> Setting Website</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ route('admin.dashboard') }}">
+                                <i class="bi bi-columns-gap me-3"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.posts.index') }}">
+                                <i class="bi bi-collection me-3"></i> Postingan
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ route('admin.galleries.index') }}"><i
+                                    class="bi bi-images me-3"></i> Postingan Galeri
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.settings') }}">
+                                <i class="bi bi-sliders2 me-3"></i> Setting Website
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

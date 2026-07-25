@@ -541,7 +541,7 @@
                     </div>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                            <a class="nav-link active" href="{{ route('admin.dashboard') }}">
                                 <i class="bi bi-columns-gap me-3"></i> Dashboard
                             </a>
                         </li>
@@ -551,7 +551,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('admin.settings') }}">
+                            <a class="nav-link active" href="{{ route('admin.galleries.index') }}"><i
+                                    class="bi bi-images me-3"></i> Postingan Galeri
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.settings') }}">
                                 <i class="bi bi-sliders2 me-3"></i> Setting Website
                             </a>
                         </li>
