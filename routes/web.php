@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\GalleryController;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Setting;
@@ -72,6 +74,25 @@ Route::get('/kontak', function () {
     return view('kontak', compact('settings'));
 });
 
+// HALAMAN GALERI FOTO PUBLIK
+Route::get('/galeri', function () {
+    $settings = Setting::pluck('value', 'key')->toArray();
+    $photos = Gallery::where('type', 'image')->latest()->paginate(12);
+    return view('gallery', compact('settings', 'photos'));
+});
+
+// HALAMAN GALERI VIDEO PUBLIK
+Route::get('/video', function () {
+    $settings = Setting::pluck('value', 'key')->toArray();
+    $videos = Gallery::where('type', 'video')->latest()->paginate(9);
+    return view('video', compact('settings', 'videos'));
+});
+
+Route::get('/program/detail/{id}', function ($id) {
+    $settings = Setting::pluck('value', 'key')->toArray();
+    return view('program-detail', compact('settings', 'id'));
+});
+
 /*
 |--------------------------------------------------------------------------
 | 2. GUEST
@@ -82,10 +103,7 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/admin-login', [AuthController::class, 'login']);
 });
 
-Route::get('/program/detail/{id}', function ($id) {
-    $settings = Setting::pluck('value', 'key')->toArray();
-    return view('program-detail', compact('settings', 'id'));
-});
+
 
 /*
 |--------------------------------------------------------------------------
@@ -124,12 +142,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/posts/{id}', [PostController::class, 'update'])->name('admin.posts.update');
     Route::post('/admin/posts/{id}/delete', [PostController::class, 'destroy'])->name('admin.posts.destroy');
 
-    // --- HALAMAN PROGRAM UNGGULAN PUBLIK ---
-    // Route::get('/program', function () {
-    //     $settings = Setting::pluck('value', 'key')->toArray();
-    //     return view('program', compact('settings'));
-    // });
-
+    // MANAJEMEN POSTINGAN GALERI
+    Route::get('/admin/galleries', [GalleryController::class, 'adminIndex'])->name('admin.galleries.index');
+    Route::post('/admin/galleries', [GalleryController::class, 'store'])->name('admin.galleries.store');
+    Route::post('/admin/galleries/{id}', [GalleryController::class, 'update'])->name('admin.galleries.update');
+    Route::post('/admin/galleries/{id}/delete', [GalleryController::class, 'destroy'])->name('admin.galleries.destroy');
 
 });
 

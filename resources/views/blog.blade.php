@@ -75,6 +75,8 @@
                         <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Beranda</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url('/profil') }}">Profil</a></li>
                         <li class="nav-item"><a class="nav-link active" href="{{ url('/blog') }}">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url('/galeri') }}">Galeri</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url('/video') }}">Video</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url('/kontak') }}">Kontak</a></li>
                     </ul>
                     <a href="{{ url('/') }}" class="btn btn-accent px-4 py-2">PSB</a>
