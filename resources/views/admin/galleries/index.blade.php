@@ -62,6 +62,47 @@
             padding: 16px 32px;
         }
 
+        /* Revamp Tombol Logout Sesuai Ketentuan 4 */
+        .btn-logout-premium {
+            margin: 0 18px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #fca5a5;
+            background-color: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            transition: all 0.2s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-logout-premium:hover {
+            color: #ffffff;
+            background-color: #dc2626;
+            border-color: #dc2626;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+        }
+
+        .btn-logout-premium {
+            width: calc(100% - 36px) !important;
+            margin: 15px auto 0 auto !important;
+            justify-content: center !important;
+        }
+
+        .btn-logout-premium {
+            width: calc(100% - 36px) !important;
+            margin: 20px 18px 0 18px !important;
+            justify-content: flex-start !important;
+        }
+
+        /* Sesuaikan ukuran tombol logout di mobile agar presisi */
+        .btn-logout-premium {
+            margin: 0 18px !important;
+            width: calc(100% - 36px) !important;
+        }
+
         .main-card {
             border: 1px solid #e2e8f0;
             border-radius: 16px;
