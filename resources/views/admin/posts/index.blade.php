@@ -580,12 +580,12 @@
                     </div>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('admin.dashboard') }}">
+                            <a class="nav-link" href="{{ route('admin.dashboard') }}">
                                 <i class="bi bi-columns-gap me-3"></i> Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.posts.index') }}">
+                            <a class="nav-link active" href="{{ route('admin.posts.index') }}">
                                 <i class="bi bi-collection me-3"></i> Postingan
                             </a>
                         </li>

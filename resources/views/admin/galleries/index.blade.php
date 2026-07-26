@@ -141,7 +141,7 @@
                     </div>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('admin.dashboard') }}">
+                            <a class="nav-link" href="{{ route('admin.dashboard') }}">
                                 <i class="bi bi-columns-gap me-3"></i> Dashboard
                             </a>
                         </li>
@@ -151,7 +151,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.galleries.index') }}"><i
+                            <a class="nav-link active" href="{{ route('admin.galleries.index') }}"><i
                                     class="bi bi-images me-3"></i> Postingan Galeri
                             </a>
                         </li>
@@ -161,6 +161,15 @@
                             </a>
                         </li>
                     </ul>
+                </div>
+
+                <div>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-logout-premium">
+                            <i class="bi bi-box-arrow-left me-3"></i> Keluar Sistem
+                        </button>
+                    </form>
                 </div>
             </div>
 
