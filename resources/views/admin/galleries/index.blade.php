@@ -543,7 +543,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // --- ENGINE CHARACTER COUNTER UNTUK CAPTION MODAL ---
+
+            // --- 1. ENGINE CHARACTER COUNTER UNTUK CAPTION MODAL ---
             const charInputs = document.querySelectorAll('.char-count-input');
 
             charInputs.forEach(input => {
@@ -564,11 +565,12 @@
                     }
                 }
 
-                // Jalankan saat admin mengetik
+                // Event listener saat user mengetik (input) atau menempel teks (paste)
                 input.addEventListener('input', updateCounter);
+                input.addEventListener('keyup', updateCounter);
             });
 
-            // --- SINKRONISASI SAAT MODAL EDIT DIBUKA ---
+            // --- 2. SINKRONISASI MODAL EDIT FOTO ---
             const btnEditFoto = document.querySelectorAll('.btn-edit-foto');
             btnEditFoto.forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -577,16 +579,25 @@
                     const caption = this.getAttribute('data-caption') || '';
 
                     document.getElementById('edit_foto_title').value = title;
-                    document.getElementById('edit_foto_caption').value = caption;
-                    document.getElementById('formEditFoto').action = `/admin/galleries/${id}`;
 
-                    // Update hitungan karakter awal modal edit foto
                     const captionInput = document.getElementById('edit_foto_caption');
-                    document.getElementById('edit_foto_char_count').innerText = captionInput.value
-                        .length;
+                    captionInput.value = caption;
+                    document.getElementById('formEditFoto').action = `/admin/galleries/${id}`;
+
+                    // Trigger manual counter saat modal edit foto terbuka
+                    const counterEl = document.getElementById('edit_foto_char_count');
+                    if (counterEl) {
+                        counterEl.innerText = caption.length;
+                        if (caption.length >= 500) {
+                            counterEl.parentElement.classList.add('text-danger', 'fw-bold');
+                        } else {
+                            counterEl.parentElement.classList.remove('text-danger', 'fw-bold');
+                        }
+                    }
                 });
             });
 
+            // --- 3. SINKRONISASI MODAL EDIT VIDEO ---
             const btnEditVideo = document.querySelectorAll('.btn-edit-video');
             btnEditVideo.forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -597,44 +608,24 @@
 
                     document.getElementById('edit_video_title').value = title;
                     document.getElementById('edit_video_link').value = link;
-                    document.getElementById('edit_video_caption').value = caption;
-                    document.getElementById('formEditVideo').action = `/admin/galleries/${id}`;
 
-                    // Update hitungan karakter awal modal edit video
                     const captionInput = document.getElementById('edit_video_caption');
-                    document.getElementById('edit_video_char_count').innerText = captionInput.value
-                        .length;
-                });
-            });
-            // Trigger Edit Foto
-            const btnEditFoto = document.querySelectorAll('.btn-edit-foto');
-            btnEditFoto.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const id = this.getAttribute('data-id');
-                    const title = this.getAttribute('data-title');
-                    const caption = this.getAttribute('data-caption');
-
-                    document.getElementById('edit_foto_title').value = title;
-                    document.getElementById('edit_foto_caption').value = caption;
-                    document.getElementById('formEditFoto').action = `/admin/galleries/${id}`;
-                });
-            });
-
-            // Trigger Edit Video
-            const btnEditVideo = document.querySelectorAll('.btn-edit-video');
-            btnEditVideo.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const id = this.getAttribute('data-id');
-                    const title = this.getAttribute('data-title');
-                    const link = this.getAttribute('data-link');
-                    const caption = this.getAttribute('data-caption');
-
-                    document.getElementById('edit_video_title').value = title;
-                    document.getElementById('edit_video_link').value = link;
-                    document.getElementById('edit_video_caption').value = caption;
+                    captionInput.value = caption;
                     document.getElementById('formEditVideo').action = `/admin/galleries/${id}`;
+
+                    // Trigger manual counter saat modal edit video terbuka
+                    const counterEl = document.getElementById('edit_video_char_count');
+                    if (counterEl) {
+                        counterEl.innerText = caption.length;
+                        if (caption.length >= 500) {
+                            counterEl.parentElement.classList.add('text-danger', 'fw-bold');
+                        } else {
+                            counterEl.parentElement.classList.remove('text-danger', 'fw-bold');
+                        }
+                    }
                 });
             });
+
         });
     </script>
 </body>
