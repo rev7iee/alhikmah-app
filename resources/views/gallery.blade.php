@@ -22,6 +22,16 @@
             animation: fadeInAnimation ease 0.4s forwards;
         }
 
+        /* HOVER CARD GALLERI FOTO */
+        .card-gallery-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08) !important;
+        }
+
         /* MASTER MODAL OVERLAY FIXED AL HIKMAH */
         .alhikmah-modal-container {
             display: none;
@@ -46,7 +56,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.65);
             pointer-events: auto;
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(4px);
         }
 
         .alhikmah-modal-card {
@@ -84,7 +94,7 @@
             margin: 0;
         }
 
-        /* LAYOUT HORIZONAL DUA KOLOM */
+        /* LAYOUT HORIZONTAL DUA KOLOM */
         .alhikmah-modal-body-split {
             display: flex;
             flex-direction: row;
@@ -94,22 +104,39 @@
             background-color: #ffffff;
         }
 
-        /* SISI KIRI: GAMBAR (FIXED FIT) */
-        .modal-col-media {
+        /* SISI KIRI: EFEK BLURRED BACKGROUND (ELEGANT FULL CONTAINER) */
+        .modal-col-media-blur {
             flex: 1.2;
-            background-color: #000000;
+            position: relative;
+            overflow: hidden;
+            background-color: #0f172a;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 20px;
             min-height: 320px;
         }
 
-        .modal-col-media img {
+        .modal-col-media-blur .bg-blur-image {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            object-fit: cover;
+            filter: blur(25px) brightness(0.5);
+            opacity: 0.85;
+            z-index: 1;
+        }
+
+        .modal-col-media-blur .main-foreground-image {
+            position: relative;
+            z-index: 2;
             max-width: 100%;
             max-height: 60vh;
             object-fit: contain;
             border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         /* SISI KANAN: TEXT & SCROLLABLE CAPTION */
@@ -120,7 +147,6 @@
             flex-direction: column;
             justify-content: space-between;
             overflow-y: auto;
-            /* Scroll mandiri hanya di sisi kanan */
             background-color: #ffffff;
         }
 
@@ -136,7 +162,6 @@
             }
         }
 
-        /* RESPONSIVE LAYOUT UNTUK LAYAR HP */
         @media (max-width: 767.98px) {
             .alhikmah-modal-card {
                 max-height: 90vh;
@@ -147,11 +172,11 @@
                 overflow-y: auto;
             }
 
-            .modal-col-media {
+            .modal-col-media-blur {
                 min-height: 220px;
             }
 
-            .modal-col-media img {
+            .modal-col-media-blur .main-foreground-image {
                 max-height: 35vh;
             }
         }
@@ -199,10 +224,9 @@
             <div class="row g-4">
                 @forelse($photos as $photo)
                     <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden bg-white"
-                            style="cursor: pointer;"
-                            onclick="openPhotoModal('{{ asset('assets/images/gallery/' . $photo->file_or_link) }}', '{{ addslashes($photo->title) }}', '{{ addslashes($photo->caption ?? '') }}')">
-                            <div class="ratio ratio-4x3">
+                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden bg-white card-gallery-item">
+                            <div class="ratio ratio-4x3" style="cursor: pointer;"
+                                onclick="openPhotoModal('{{ asset('assets/images/gallery/' . $photo->file_or_link) }}', '{{ addslashes($photo->title) }}', '{{ addslashes($photo->caption ?? '') }}')">
                                 <img src="{{ asset('assets/images/gallery/' . $photo->file_or_link) }}"
                                     style="object-fit:cover;" alt="{{ $photo->title }}">
                             </div>
@@ -213,10 +237,13 @@
                                         {{ \Str::limit($photo->caption, 80) ?? 'Dokumentasi resmi Al Hikmah.' }}
                                     </p>
                                 </div>
-                                <span
-                                    class="text-success fw-semibold small mt-3 d-inline-flex align-items-center gap-1">
-                                    Lihat Selengkapnya <i class="bi bi-arrow-right" style="font-size: 0.8rem;"></i>
-                                </span>
+
+                                <!-- POIN 2: TOMBOL DENGAN ICON SAMA SEPERTI HALAMAN VIDEO -->
+                                <button type="button"
+                                    class="btn btn-sm btn-outline-success rounded-pill px-3 mt-3 w-100 fw-medium d-flex align-items-center justify-content-center gap-1"
+                                    onclick="openPhotoModal('{{ asset('assets/images/gallery/' . $photo->file_or_link) }}', '{{ addslashes($photo->title) }}', '{{ addslashes($photo->caption ?? '') }}')">
+                                    <i class="bi bi-eye-fill"></i> Lihat Selengkapnya
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -237,7 +264,7 @@
     </div>
 
     <!-- ========================================================================= -->
-    <!-- MASTER OVERLAY MODAL FOTO HORIZONTAL (FIXED POSISI & INDEPENDENT SCROLL)  -->
+    <!-- POIN 1: MASTER OVERLAY MODAL FOTO WITH FROSTED BLUR BACKGROUND           -->
     <!-- ========================================================================= -->
     <div id="alhikmahPhotoOverlay" class="alhikmah-modal-container">
         <div class="alhikmah-modal-backdrop" onclick="closePhotoModal()"></div>
@@ -247,9 +274,10 @@
                 <button type="button" class="btn-close" onclick="closePhotoModal()"></button>
             </div>
             <div class="alhikmah-modal-body-split">
-                <!-- KANVAS KIRI: FOTO AKURAT -->
-                <div class="modal-col-media">
-                    <img id="modalPhotoImage" src="" alt="Pratinjau Foto">
+                <!-- KANVAS KIRI: BLURRED FROSTED BACKGROUND + UTAMA -->
+                <div class="modal-col-media-blur">
+                    <img id="modalPhotoImageBlur" class="bg-blur-image" src="" alt="Background Blur">
+                    <img id="modalPhotoImage" class="main-foreground-image" src="" alt="Pratinjau Foto">
                 </div>
                 <!-- KANVAS KANAN: DESKRIPSI TEKS BISA DI-SCROLL MANDIRI -->
                 <div class="modal-col-text">
@@ -278,6 +306,7 @@
 
         function openPhotoModal(imageUrl, title, caption) {
             document.getElementById('modalPhotoImage').src = imageUrl;
+            document.getElementById('modalPhotoImageBlur').src = imageUrl;
             document.getElementById('modalPhotoTitle').innerText = title;
             document.getElementById('modalPhotoCaption').innerText = caption || 'Tidak ada keterangan tambahan.';
 
@@ -288,6 +317,7 @@
         function closePhotoModal() {
             photoModal.classList.remove('active');
             document.getElementById('modalPhotoImage').src = '';
+            document.getElementById('modalPhotoImageBlur').src = '';
         }
     </script>
 </body>

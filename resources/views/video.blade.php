@@ -22,6 +22,49 @@
             animation: fadeInAnimation ease 0.4s forwards;
         }
 
+        /* POIN 3: CARD VIDEO & HOVER EFEK NEGATIF PLAY BUTTON */
+        .card-video-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        .video-thumb-wrap {
+            position: relative;
+            height: 210px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .video-thumb-wrap img {
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        .video-thumb-wrap .play-icon-btn {
+            font-size: 3.5rem;
+            color: #dc2626;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+            z-index: 2;
+        }
+
+        /* EFEK HOVER NEGATIF INTERAKTIF */
+        .video-thumb-wrap:hover img {
+            transform: scale(1.06);
+            filter: brightness(0.75);
+        }
+
+        .video-thumb-wrap:hover .play-icon-btn {
+            color: #ffffff;
+            /* Berubah menjadi putih */
+            transform: scale(1.25);
+            /* Membesar dengan animasi bouncing */
+            filter: drop-shadow(0 0 18px rgba(220, 38, 38, 0.9));
+        }
+
         /* MASTER MODAL OVERLAY FIXED AL HIKMAH */
         .alhikmah-modal-container {
             display: none;
@@ -46,7 +89,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.65);
             pointer-events: auto;
-            backdrop-filter: blur(3px);
+            backdrop-filter: blur(4px);
         }
 
         .alhikmah-modal-card {
@@ -129,7 +172,6 @@
             flex-direction: column;
             justify-content: space-between;
             overflow-y: auto;
-            /* Scroll mandiri hanya di sisi kanan */
             background-color: #ffffff;
         }
 
@@ -145,7 +187,6 @@
             }
         }
 
-        /* RESPONSIVE LAYOUT UNTUK LAYAR HP */
         @media (max-width: 767.98px) {
             .alhikmah-modal-card {
                 max-height: 90vh;
@@ -215,15 +256,13 @@
                             : 'https://placehold.co/600x400?text=Video+Al+Hikmah';
                     @endphp
                     <div class="col-md-6 col-lg-4">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden bg-white">
-                            <div class="position-relative d-flex align-items-center justify-content-center overflow-hidden"
-                                style="height: 210px; cursor: pointer;"
+                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden bg-white card-video-item">
+                            <!-- WADAH THUMBNAIL DENGAN EFEK HOVER PLAY BUTTON -->
+                            <div class="video-thumb-wrap d-flex align-items-center justify-content-center"
                                 onclick="openVideoModal('{{ $vid->file_or_link }}', '{{ addslashes($vid->title) }}', '{{ addslashes($vid->caption ?? '') }}')">
-                                <!-- THUMBNAIL OTOMATIS YOUTUBE -->
                                 <img src="{{ $thumbUrl }}" class="w-100 h-100 position-absolute"
                                     style="object-fit: cover; filter: brightness(0.85);">
-                                <i class="bi bi-play-circle-fill text-danger display-4 position-relative"
-                                    style="z-index: 2;"></i>
+                                <i class="bi bi-play-circle-fill play-icon-btn position-relative"></i>
                             </div>
                             <div class="card-body p-4 d-flex flex-column justify-content-between">
                                 <div>
@@ -233,9 +272,9 @@
                                     </p>
                                 </div>
                                 <button type="button"
-                                    class="btn btn-sm btn-outline-danger rounded-pill px-3 mt-3 w-100 fw-medium"
+                                    class="btn btn-sm btn-outline-danger rounded-pill px-3 mt-3 w-100 fw-medium d-flex align-items-center justify-content-center gap-1"
                                     onclick="openVideoModal('{{ $vid->file_or_link }}', '{{ addslashes($vid->title) }}', '{{ addslashes($vid->caption ?? '') }}')">
-                                    <i class="bi bi-play-fill me-1"></i> Tonton Video
+                                    <i class="bi bi-play-fill"></i> Tonton Video
                                 </button>
                             </div>
                         </div>
