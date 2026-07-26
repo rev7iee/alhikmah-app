@@ -255,10 +255,16 @@
             <div class="mt-5 d-flex justify-content-center">{{ $photos->links('pagination::bootstrap-5') }}</div>
         </main>
 
-        <!-- FOOTER -->
-        <footer class="main-footer pt-5 pb-3 bg-white border-top">
-            <div class="container text-center text-secondary small">
-                <p>&copy; 2026 Pondok Pesantren Al Hikmah. All rights reserved.</p>
+        <!-- ========================================================================= -->
+        <!-- 8. FOOTER                                                                 -->
+        <!-- ========================================================================= -->
+        <footer class="main-footer pt-5 pb-3">
+            <div class="container">
+                <div class="row pt-2 small text-secondary">
+                    <div class="col-md-12 text-center">
+                        <p class="mb-0">&copy; 2026 Pondok Pesantren Al Hikmah. All rights reserved.</p>
+                    </div>
+                </div>
             </div>
         </footer>
     </div>
