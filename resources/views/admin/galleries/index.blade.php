@@ -372,10 +372,14 @@
                                 accept="image/*" required>
                         </div>
                         <div class="mb-0">
-                            <label class="form-label small fw-bold text-secondary text-uppercase">Caption / Keterangan
-                                Teks (Opsional)</label>
-                            <textarea name="caption" maxlength="500" class="form-control modal-input-custom" rows="3"
-                                placeholder="Tuliskan keterangan foto..."></textarea>
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <label class="form-label small fw-bold text-secondary text-uppercase mb-0">Caption /
+                                    Keterangan Teks (Opsional)</label>
+                                <span class="small text-muted" style="font-size: 0.75rem;"><span
+                                        id="add_foto_char_count">0</span> / 500 Karakter</span>
+                            </div>
+                            <textarea name="caption" id="add_foto_caption" class="form-control modal-input-custom char-count-input"
+                                maxlength="500" data-counter="add_foto_char_count" rows="3" placeholder="Tuliskan keterangan foto..."></textarea>
                         </div>
                     </div>
                     <div class="modal-footer border-top border-light p-3 px-4 bg-light bg-opacity-40">
@@ -417,9 +421,14 @@
                                 placeholder="https://www.youtube.com/watch?v=..." required>
                         </div>
                         <div class="mb-0">
-                            <label class="form-label small fw-bold text-secondary text-uppercase">Caption / Keterangan
-                                Teks (Opsional)</label>
-                            <textarea name="caption" maxlength="500" class="form-control modal-input-custom" rows="3"
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <label class="form-label small fw-bold text-secondary text-uppercase mb-0">Caption /
+                                    Keterangan Teks (Opsional)</label>
+                                <span class="small text-muted" style="font-size: 0.75rem;"><span
+                                        id="add_video_char_count">0</span> / 500 Karakter</span>
+                            </div>
+                            <textarea name="caption" id="add_video_caption" class="form-control modal-input-custom char-count-input"
+                                maxlength="500" data-counter="add_video_char_count" rows="3"
                                 placeholder="Tuliskan keterangan ringkas video..."></textarea>
                         </div>
                     </div>
@@ -461,9 +470,14 @@
                                 accept="image/*">
                         </div>
                         <div class="mb-0">
-                            <label class="form-label small fw-bold text-secondary text-uppercase">Caption / Keterangan
-                                Teks</label>
-                            <textarea name="caption" id="edit_foto_caption" class="form-control modal-input-custom" rows="3"></textarea>
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <label class="form-label small fw-bold text-secondary text-uppercase mb-0">Caption /
+                                    Keterangan Teks</label>
+                                <span class="small text-muted" style="font-size: 0.75rem;"><span
+                                        id="edit_foto_char_count">0</span> / 500 Karakter</span>
+                            </div>
+                            <textarea name="caption" id="edit_foto_caption" class="form-control modal-input-custom char-count-input"
+                                maxlength="500" data-counter="edit_foto_char_count" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer border-top border-light p-3 px-4 bg-light bg-opacity-40">
@@ -504,9 +518,14 @@
                                 class="form-control modal-input-custom" required>
                         </div>
                         <div class="mb-0">
-                            <label class="form-label small fw-bold text-secondary text-uppercase">Caption / Keterangan
-                                Teks</label>
-                            <textarea name="caption" id="edit_video_caption" class="form-control modal-input-custom" rows="3"></textarea>
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <label class="form-label small fw-bold text-secondary text-uppercase mb-0">Caption /
+                                    Keterangan Teks</label>
+                                <span class="small text-muted" style="font-size: 0.75rem;"><span
+                                        id="edit_video_char_count">0</span> / 500 Karakter</span>
+                            </div>
+                            <textarea name="caption" id="edit_video_caption" class="form-control modal-input-custom char-count-input"
+                                maxlength="500" data-counter="edit_video_char_count" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer border-top border-light p-3 px-4 bg-light bg-opacity-40">
