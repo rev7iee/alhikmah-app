@@ -242,6 +242,35 @@
                 <p class="text-muted">Simak liputan kegiatan, ceramah, dan profil pesantren secara interaktif.</p>
             </div>
 
+            <!-- SEARCH & FILTER BAR -->
+            <form action="{{ url('/video') }}" method="GET" class="mb-5">
+                <div class="row g-3 justify-content-center">
+                    <div class="col-md-6 col-lg-5">
+                        <div class="input-group shadow-sm rounded-3 overflow-hidden">
+                            <span class="input-group-text bg-white border-end-0 ps-3 text-muted"><i
+                                    class="bi bi-search"></i></span>
+                            <input type="text" name="keyword" class="form-control border-start-0 py-2.5"
+                                placeholder="Cari judul atau kata kunci video..." value="{{ request('keyword') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3">
+                        <select name="sort" class="form-select py-2.5 shadow-sm rounded-3 text-secondary"
+                            onchange="this.form.submit()">
+                            <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Terbaru Diunggah
+                            </option>
+                            <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>Terlama Diunggah
+                            </option>
+                        </select>
+                    </div>
+                    @if (request('keyword') || request('sort'))
+                        <div class="col-auto">
+                            <a href="{{ url('/video') }}" class="btn btn-outline-secondary py-2.5 px-3 rounded-3"
+                                title="Reset Filter"><i class="bi bi-arrow-counterclockwise me-1"></i> Reset</a>
+                        </div>
+                    @endif
+                </div>
+            </form>
+
             <div class="row g-4">
                 @forelse($videos as $vid)
                     @php

@@ -9,10 +9,78 @@ use Illuminate\Support\Str;
 class GalleryController extends Controller
 {
     // Halaman Admin Galeri
-    public function adminIndex()
+    public function adminIndex(Request $request)
     {
-        $galleries = Gallery::latest()->paginate(10);
+        $query = Gallery::query();
+
+        // Filter Keyword
+        if ($request->filled('keyword')) {
+            $query->where(function ($q) use ($request) {
+                $q->where('title', 'like', '%' . $request->keyword . '%')
+                    ->orWhere('caption', 'like', '%' . $request->keyword . '%');
+            });
+        }
+
+        // Filter Tipe Media (Image / Video)
+        if ($request->filled('type') && in_array($request->type, ['image', 'video'])) {
+            $query->where('type', $request->type);
+        }
+
+        $galleries = $query->latest()->paginate(10)->appends($request->all());
+
         return view('admin.galleries.index', compact('galleries'));
+    }
+
+    // Halaman Galeri Foto Publik dengan Search & Filter Urutan
+    public function publicPhoto(Request $request)
+    {
+        $settings = \App\Models\Setting::pluck('value', 'key')->toArray();
+        $query = Gallery::where('type', 'image');
+
+        // Search Keyword
+        if ($request->filled('keyword')) {
+            $query->where(function ($q) use ($request) {
+                $q->where('title', 'like', '%' . $request->keyword . '%')
+                    ->orWhere('caption', 'like', '%' . $request->keyword . '%');
+            });
+        }
+
+        // Filter Sort (Terbaru / Terlama)
+        if ($request->sort === 'oldest') {
+            $query->orderBy('created_at', 'asc');
+        } else {
+            $query->orderBy('created_at', 'desc');
+        }
+
+        $photos = $query->paginate(12)->appends($request->all());
+
+        return view('gallery', compact('settings', 'photos'));
+    }
+
+    // Halaman Galeri Video Publik dengan Search & Filter Urutan
+    public function publicVideo(Request $request)
+    {
+        $settings = \App\Models\Setting::pluck('value', 'key')->toArray();
+        $query = Gallery::where('type', 'video');
+
+        // Search Keyword
+        if ($request->filled('keyword')) {
+            $query->where(function ($q) use ($request) {
+                $q->where('title', 'like', '%' . $request->keyword . '%')
+                    ->orWhere('caption', 'like', '%' . $request->keyword . '%');
+            });
+        }
+
+        // Filter Sort (Terbaru / Terlama)
+        if ($request->sort === 'oldest') {
+            $query->orderBy('created_at', 'asc');
+        } else {
+            $query->orderBy('created_at', 'desc');
+        }
+
+        $videos = $query->paginate(9)->appends($request->all());
+
+        return view('video', compact('settings', 'videos'));
     }
 
     // Simpan Data Baru (Foto atau Video)

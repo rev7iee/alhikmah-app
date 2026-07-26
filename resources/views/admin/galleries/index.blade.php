@@ -211,6 +211,34 @@
                         </div>
                     @endif
 
+                    <!-- BARIS SEARCH & FILTER TABEL ADMIN -->
+                    <div class="row g-3 mb-4 align-items-center">
+                        <div class="col-md-8 col-lg-6">
+                            <form action="{{ route('admin.galleries.index') }}" method="GET" class="d-flex gap-2">
+                                <div class="input-group shadow-sm rounded-3 overflow-hidden">
+                                    <span class="input-group-text bg-white border-end-0 ps-3 text-muted"><i
+                                            class="bi bi-search"></i></span>
+                                    <input type="text" name="keyword" class="form-control border-start-0 py-2"
+                                        placeholder="Cari judul atau caption galeri..."
+                                        value="{{ request('keyword') }}">
+                                </div>
+                                <select name="type" class="form-select py-2 shadow-sm rounded-3 text-secondary"
+                                    style="max-width: 170px;" onchange="this.form.submit()">
+                                    <option value="">Semua Tipe</option>
+                                    <option value="image" {{ request('type') == 'image' ? 'selected' : '' }}>Khusus
+                                        Foto</option>
+                                    <option value="video" {{ request('type') == 'video' ? 'selected' : '' }}>Khusus
+                                        Video</option>
+                                </select>
+                                @if (request('keyword') || request('type'))
+                                    <a href="{{ route('admin.galleries.index') }}"
+                                        class="btn btn-light border py-2 px-3 rounded-3 text-secondary"
+                                        title="Reset"><i class="bi bi-arrow-counterclockwise"></i></a>
+                                @endif
+                            </form>
+                        </div>
+                    </div>
+
                     <div class="main-card">
                         <div class="table-responsive">
                             <table class="table table-premium align-middle mb-0">
@@ -271,8 +299,8 @@
                                                             class="btn btn-sm btn-outline-success btn-edit-foto"
                                                             data-id="{{ $item->id }}"
                                                             data-title="{{ $item->title }}"
-                                                            data-caption="{{ $item->caption }}" data-bs-toggle="modal"
-                                                            data-bs-target="#modalEditFoto">
+                                                            data-caption="{{ $item->caption }}"
+                                                            data-bs-toggle="modal" data-bs-target="#modalEditFoto">
                                                             <i class="bi bi-pencil"></i>
                                                         </button>
                                                     @else
@@ -281,8 +309,8 @@
                                                             data-id="{{ $item->id }}"
                                                             data-title="{{ $item->title }}"
                                                             data-link="{{ $item->file_or_link }}"
-                                                            data-caption="{{ $item->caption }}" data-bs-toggle="modal"
-                                                            data-bs-target="#modalEditVideo">
+                                                            data-caption="{{ $item->caption }}"
+                                                            data-bs-toggle="modal" data-bs-target="#modalEditVideo">
                                                             <i class="bi bi-pencil"></i>
                                                         </button>
                                                     @endif

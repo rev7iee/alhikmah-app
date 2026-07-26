@@ -5,7 +5,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\GalleryController;
-use App\Models\Gallery;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Setting;
@@ -75,18 +74,10 @@ Route::get('/kontak', function () {
 });
 
 // HALAMAN GALERI FOTO PUBLIK
-Route::get('/galeri', function () {
-    $settings = Setting::pluck('value', 'key')->toArray();
-    $photos = Gallery::where('type', 'image')->latest()->paginate(12);
-    return view('gallery', compact('settings', 'photos'));
-});
+Route::get('/galeri', [GalleryController::class, 'publicPhoto'])->name('public.gallery');
 
 // HALAMAN GALERI VIDEO PUBLIK
-Route::get('/video', function () {
-    $settings = Setting::pluck('value', 'key')->toArray();
-    $videos = Gallery::where('type', 'video')->latest()->paginate(9);
-    return view('video', compact('settings', 'videos'));
-});
+Route::get('/video', [GalleryController::class, 'publicVideo'])->name('public.video');
 
 Route::get('/program/detail/{id}', function ($id) {
     $settings = Setting::pluck('value', 'key')->toArray();
