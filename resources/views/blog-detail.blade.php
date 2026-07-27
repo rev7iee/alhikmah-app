@@ -57,7 +57,7 @@
 
         <header class="container my-4">
             <div class="position-relative rounded-4 overflow-hidden shadow-sm" style="min-height: 400px">
-                <img src="{{ asset('assets/images/news/' . $post->thumbnail) }}" alt="{{ $post->title }}"
+                <img src="{{ asset('assets/images/news/' . $post->bg_detail) }}" alt="{{ $post->title }}"
                     class="position-absolute w-100 h-100" style="object-fit: cover; z-index: 1"
                     onerror="this.src='https://via.placeholder.com/1200x500?text=Warta+Al+Hikmah'" />
                 <div class="position-absolute w-100 h-100"
